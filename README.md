@@ -70,6 +70,9 @@ O sistema escolhido como projeto final, denominado Unimages, é a criação de u
 
 ## Modelagem Entidade Relacionamento do banco de dados
 
+Os requisitos especificados anteriormente assim como os dados padrão para usuários utilizados no desenvolvimento de softwares foram considerados para o desenvolvimento do Modelo Entidade Relacionamento especificado abaixo.  
+O mesmo contém a listagem dos atributos assim como seus valores e se são chaves primárias, estrangeiras ou os dois. As ligações estão especificadas por setas diferenciadas representando assim as ligações (1, n), (n, 1) e (n, n).
+
 ![](https://github.com/andreinamendes/unimages/blob/main/Documentos/ModeloER.jpeg)
 
 #
