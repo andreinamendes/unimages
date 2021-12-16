@@ -19,6 +19,8 @@ No contexto social vigente, a internet conta com inúmeros bancos, não somente 
 
 O sistema escolhido como projeto final, denominado Unimages, é a criação de um banco de imagens que possa auxiliar estudantes, onde os mesmos terão acesso ao conteúdo pago após uma comprovação de sua relação com a instituição.
 
+Para  mais detalhes fica a disposição o [Documento de Visão](https://github.com/andreinamendes/unimages/blob/main/docs/Unimages.pdf), com todos os detalhes do projeto.
+
 #
 
 ## Especificação de requisitos
