@@ -75,7 +75,7 @@ Link: <https://trello.com/invite/b/7JqyV2FX/0ca68abd02cd901cf91ca74aa6979426/uni
   - [RNF-9] Como usuário comum, gostaria de poder acessar os dados referentes à compra das minhas imagens sempre que eu quiser.
   - [RNF-10] Como usuário comum, gostaria de poder acessar a listagem de imagens sempre que eu precisar.
 
-## Modelagem Entidade Relacionamento do banco de dados
+## Modelagem Entidade Relacionamento
 
 Os requisitos especificados anteriormente assim como os dados padrão para usuários utilizados no desenvolvimento de softwares foram considerados para o desenvolvimento do Modelo Entidade Relacionamento especificado abaixo.  
 O mesmo contém a listagem dos atributos assim como seus valores e se são chaves primárias, estrangeiras ou os dois. As ligações estão especificadas por setas diferenciadas representando assim as ligações (1, n), (n, 1) e (n, n).
