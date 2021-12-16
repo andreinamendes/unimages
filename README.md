@@ -8,8 +8,6 @@ Repositório voltado a todas as informações do projeto da disciplina de Engenh
 
 ## Detalhes do projeto escolhido
 
-#
-
 No contexto social vigente, a internet conta com inúmeros bancos, não somente de imagens, como também vetores, templates e outros inúmeros elementos associados ao design. Contudo, muitas vezes encontram-se limitações pela necessidade de assinar um plano do site ou pagar pelo produto para ter acesso ao que deseja, o que pode não ser possível considerando a realidade socioeconômica de muitos alunos. Pensando nisso, nota-se que há uma necessidade de um banco de imagem que esteja disponível para alunos, mas que mantenha o suporte financeiro para os artistas parceiros.
 
 O sistema escolhido como projeto final, denominado Unimages, é a criação de um banco de imagens que possa auxiliar estudantes, onde os mesmos terão acesso ao conteúdo pago após uma comprovação de sua relação com a instituição.
@@ -17,8 +15,6 @@ O sistema escolhido como projeto final, denominado Unimages, é a criação de u
 #
 
 ## Especificação de requisitos
-
-#
 
 ### Requisitos Funcionais
 
@@ -73,8 +69,5 @@ O sistema escolhido como projeto final, denominado Unimages, é a criação de u
 #
 
 ## Modelagem Entidade Relacionamento do banco de dados
-
-#
-
 
 #
