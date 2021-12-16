@@ -80,4 +80,4 @@ Link: <https://github.com/andreinamendes/unimages/blob/main/docs/Unimages.pdf>
 Os requisitos especificados anteriormente assim como os dados padrão para usuários utilizados no desenvolvimento de softwares foram considerados para o desenvolvimento do Modelo Entidade Relacionamento especificado abaixo.  
 O mesmo contém a listagem dos atributos assim como seus valores e se são chaves primárias, estrangeiras ou os dois. As ligações estão especificadas por setas diferenciadas representando assim as ligações (1, n), (n, 1) e (n, n).
 
-![](https://github.com/andreinamendes/unimages/blob/main/docs/ModeloER.jpeg)
+![](https://github.com/andreinamendes/unimages/blob/main/docs/Modelo_ER.jpeg)
