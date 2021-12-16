@@ -16,7 +16,7 @@ O sistema escolhido como projeto final, denominado Unimages, é a criação de u
 
 ## Especificação de requisitos
 
-Os requisitos foram organizados em uma ferramenta de gerenciamento de tarefas, Trello, abaixo segue o link do quadro criado, e nele, especificado cada história de usuário com seus respectivos testes.
+Os requisitos foram organizados na ferramenta de gerenciamento de tarefas Trello. Abaixo segue o link do quadro criado, e nele, especificado cada história de usuário com seus respectivos testes.
 
 Link: <https://trello.com/invite/b/7JqyV2FX/0ca68abd02cd901cf91ca74aa6979426/es-entrega-01>
 
