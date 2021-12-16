@@ -23,7 +23,7 @@ Para  mais detalhes sobre o projeto fica a disposição o [Documento de Visão](
 
 Os requisitos foram organizados na ferramenta de gerenciamento de tarefas Trello. Abaixo segue o link do quadro criado, e nele, especificado cada história de usuário com seus respectivos testes.
 
-Link: <https://github.com/andreinamendes/unimages/blob/main/docs/Unimages.pdf>
+Link: <https://trello.com/invite/b/7JqyV2FX/0ca68abd02cd901cf91ca74aa6979426/unimages>
 
 ### Requisitos Funcionais
 
