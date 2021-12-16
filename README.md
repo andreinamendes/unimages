@@ -4,6 +4,13 @@
 
 Repositório voltado a todas as informações do projeto da disciplina de Engenharia de Software ministrada pelo professor Camilo Almendra.
 
+Equipe:  
+[Andreina Mendes](https://github.com/andreinamendes)  
+[Elano Nunes](https://github.com/elanonc)  
+[João Victor Aquino](https://github.com/jvac99)  
+[Mariana Oliveira](https://github.com/marianaoliveira1)  
+[Roberto Coutinho](https://github.com/RobertoCoutinho)
+
 #
 
 ## Detalhes do projeto escolhido
