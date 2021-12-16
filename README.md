@@ -70,6 +70,6 @@ O sistema escolhido como projeto final, denominado Unimages, é a criação de u
 
 ## Modelagem Entidade Relacionamento do banco de dados
 
-![](https://github.com/andreinamendes/unimages/blob/main/modelo%20er.jpeg)
+![](https://github.com/andreinamendes/unimages/blob/main/Documentos/ModeloER.jpeg)
 
 #
