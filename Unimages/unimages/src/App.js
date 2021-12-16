@@ -9,7 +9,8 @@ import { About } from './pages/about/About';
 import { Home } from './pages/home/Home';
 import { Profile } from './pages/profile/Profile';
 import { Contact } from './pages/contact/Contact';
-import { Navigation } from './components/navigation/Navigation'
+import { Navigation } from './components/navigation/Navigation';
+import { Footer } from './components/footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </Router>
   )
 }
