@@ -2,17 +2,19 @@ var express = require('express');
 
 const router = express.Router();
 
+/*
 const AssinanteController = require('./controllers/AssinanteController');
 const AutorController = require('./controllers/AutorController');
 const ImagemController = require('./controllers/ImagemController');
 const PessoaController = require('./controllers/PessoaController');
 const PlanoController = require('./controllers/PlanoController');
+*/
 
 router.get('/', (require, response) => {
     return response.json({ message: 'Olá' });
 });
 
-
+/*
 router.get('/assinante', AssinanteController.index);
 router.get('/autor', AutorController.index);
 router.get('/imagem', ImagemController.index);
@@ -30,6 +32,7 @@ router.delete('/autor/:id', AutorController.delete);
 router.delete('/imagem/:id', ImagemController.delete);
 router.delete('/pessoa/:id', PessoaController.delete);
 router.delete('/incidents/:id', PlanoController.delete);
+*/
 
 module.exports = router;
 

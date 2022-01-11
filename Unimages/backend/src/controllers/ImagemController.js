@@ -1,3 +1,4 @@
+/*
 const connection = require('../database/connection');
 
 module.exports = {
@@ -56,3 +57,4 @@ module.exports = {
         return response.status(204).send();
     }
 };
+*/
