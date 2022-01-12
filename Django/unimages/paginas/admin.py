@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+# Importar e adicionar tabela.
+
+from .models import Plano
+
+admin.site.register(Plano)
