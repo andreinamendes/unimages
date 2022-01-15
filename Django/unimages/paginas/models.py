@@ -22,13 +22,13 @@ class Plano(models.Model):
         blank=True
     )
 
-    # Valor: valor do quadro.
+    # Valor: valor do plano.
     valor = models.FloatField(
         null=False,
         blank=False,
     )
 
-    # Duracao: duracao do quadro.
+    # Duracao: duracao do plano.
     duracao = models.IntegerField(
         null=False,
         blank=False,
