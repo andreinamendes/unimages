@@ -10,3 +10,13 @@ class AutorForm(forms.ModelForm):
         agencia = forms.CharField()
         conta = forms.CharField()
         pix = forms.CharField()
+
+class PlanosForm(forms.ModelForm):
+    class Meta:
+        model = Plano
+        fields = ['nome', 'descricao', 'valor','duracao', 'pix']
+        nome = forms.CharField()
+        descricao = forms.CharField()
+        valor = forms.CharField()
+        duracao = forms.CharField()
+        pix = forms.CharField()
