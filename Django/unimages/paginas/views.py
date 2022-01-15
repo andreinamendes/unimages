@@ -51,17 +51,45 @@ def plano(request, id):
 
 @login_required
 def cadastrar_plano(request):
-    pass
+    if request.method == 'POST':
+        form = PlanosForm(request.POST)
+        if form.is_valid():
+            plano = form.save(commit=False)
+            plano.usuario = request.user
+            plano.save()
+            messages.info(request, 'Plano salvo com sucesso.')
+            return redirect('/home')
+        else:
+            return render(request, 'paginas/plano/planos.html', {'form': form}) #ser_autor
+    else:
+        form = PlanosForm()
+        return render(request, 'paginas/plano/planos.html', {'form': form}) #ser_autor
 
 
 @login_required
-def editar_plano(request, id):
-    pass
+def editar_plano(request):
+    plano = get_object_or_404(Plano, usuario=request.user)
+    if request.method == 'POST':
+        form = PlanosForm(request.POST, instance=plano)
+        if form.is_valid():
+            plano = form.save(commit=False)
+            plano.usuario = request.user
+            plano.save()
+            messages.info(request, 'Plano salvo com sucesso.')
+            return redirect('/home')
+        else:
+            return render(request, 'paginas/autor/ser_autor.html', {'form': form})
+    else:
+        form = PlanosForm(instance=plano)
+        return render(request, 'paginas/autor/ser_autor.html', {'form': form})
 
 
 @login_required
-def deletar_plano(request, id_plano):
-    pass
+def deletar_plano(request):
+    plano = get_object_or_404(Plano, usuario=request.user)
+    plano.delete()  # Deletando o plano
+    messages.info(request, 'Plano deletado com sucesso.')
+    return redirect('/home')
 
 
 @login_required
@@ -113,10 +141,10 @@ def editar_autor(request):
             messages.info(request, 'Autor salvo com sucesso.')
             return redirect('/home')
         else:
-            return render(request, 'paginas/autor/ser_autor.html', {'form': form})
+            return render(request, 'paginas/plano/planos.html', {'form': form})
     else:
         form = AutorForm(instance=autor)
-        return render(request, 'paginas/autor/ser_autor.html', {'form': form})
+        return render(request, 'paginas/plano/planos.html', {'form': form})
 
 
 @login_required
