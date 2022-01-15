@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %} ## Carregando a biblioteca
+
+{% block title %} {{plano.nome}} | Unimages{% endblock %}
+
+{% block content %}
+
+    <h1>{{plano.nome}}</h1>
+    
+{% endblock %}

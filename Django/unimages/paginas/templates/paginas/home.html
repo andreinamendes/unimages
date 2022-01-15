@@ -1,11 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
-{% load crispy_forms_tags %} ## Carregando a biblioteca
+{% load crispy_forms_tags %} ## Carregando a biblioteca 
 
-{% block title %} Home | Unimages{% endblock %}
+{% block title %} Home | Unimages{% endblock %} 
 
 {% block content %}
 
+{% if messages %}
 
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+<a class="nav-link" href="{% url 'paginas:cadastrar_autor'%}">Cad autor</a>
+<a class="nav-link" href="{% url 'paginas:editar_autor'%}">Editar autor</a>
+<a class="nav-link" href="{% url 'paginas:deletar_autor'%}">Delete autor</a>
 
 {% endblock %}

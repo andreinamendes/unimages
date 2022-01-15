@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %} ## Carregando a biblioteca
 
-{% block title %}Jecode - novo quadro{% endblock %}
+{% block title %}Unimages - Ser autor{% endblock %}
 
 {% block content %}
 
@@ -18,7 +18,7 @@
 <main class="main-forms">
     <div class="container-forms">
         <form method="post" class="forms">
-            <h4>Novo quadro</h4>
+            <h4>Ser autor</h4>
             {% csrf_token %}
 
             {{ form | crispy }}
