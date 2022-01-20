@@ -18,8 +18,16 @@ def index(request):
 
 
 @login_required
+def listar_imagens(request):
+    return Imagem.objects.all().order_by(
+        '-created_at')
+
+
+@login_required
 def home(request):
-    return render(request, 'paginas/home.html')
+    imagens = listar_imagens(request)
+    print(imagens)
+    return render(request, 'paginas/home.html', {'imagens': imagens})
 
 
 @login_required
@@ -52,44 +60,46 @@ def plano(request, id):
 @login_required
 def cadastrar_plano(request):
     if request.method == 'POST':
-        form = PlanosForm(request.POST)
+        form = PlanoForm(request.POST)
         if form.is_valid():
             plano = form.save(commit=False)
             plano.usuario = request.user
             plano.save()
             messages.info(request, 'Plano salvo com sucesso.')
-            return redirect('/home')
+            return redirect('/planos')
         else:
-            return render(request, 'paginas/plano/planos.html', {'form': form}) #ser_autor
+            # ser_autor
+            return render(request, 'paginas/plano/cad_plano.html', {'form': form})
     else:
-        form = PlanosForm()
-        return render(request, 'paginas/plano/planos.html', {'form': form}) #ser_autor
+        form = PlanoForm()
+        # ser_autor
+        return render(request, 'paginas/plano/cad_plano.html', {'form': form})
 
 
 @login_required
-def editar_plano(request):
-    plano = get_object_or_404(Plano, usuario=request.user)
+def editar_plano(request, id):
+    plano = get_object_or_404(Plano, id=id)
     if request.method == 'POST':
-        form = PlanosForm(request.POST, instance=plano)
+        form = PlanoForm(request.POST, instance=plano)
         if form.is_valid():
             plano = form.save(commit=False)
             plano.usuario = request.user
             plano.save()
             messages.info(request, 'Plano salvo com sucesso.')
-            return redirect('/home')
+            return redirect('/planos')
         else:
-            return render(request, 'paginas/autor/ser_autor.html', {'form': form})
+            return render(request, 'paginas/plano/editar_plano.html', {'form': form})
     else:
-        form = PlanosForm(instance=plano)
-        return render(request, 'paginas/autor/ser_autor.html', {'form': form})
+        form = PlanoForm(instance=plano)
+        return render(request, 'paginas/plano/editar_plano.html', {'form': form})
 
 
 @login_required
-def deletar_plano(request):
-    plano = get_object_or_404(Plano, usuario=request.user)
+def deletar_plano(request, id):
+    plano = get_object_or_404(Plano, id=id)
     plano.delete()  # Deletando o plano
     messages.info(request, 'Plano deletado com sucesso.')
-    return redirect('/home')
+    return redirect('/planos')
 
 
 @login_required
@@ -160,18 +170,26 @@ def imagens(request):
     return render(request, 'paginas/imagens.html')
 
 
-@login_required
-def listar_imagens(request):
-    pass
-
-
 def listar_imagem(request, id):
     return get_object_or_404(Imagem, pk=id)  # Buscando o quadro
 
 
 @login_required
 def cadastrar_imagem(request):
-    pass
+    autor = get_object_or_404(Autor, usuario=request.user)
+    if request.method == 'POST':
+        form = ImagemForm(request.POST)
+        if form.is_valid():
+            imagem = form.save(commit=False)
+            imagem.autor = autor
+            imagem.save()
+            messages.info(request, 'Imagem salva com sucesso.')
+            return redirect('/home')
+        else:
+            return render(request, 'paginas/imagem/cad_imagem.html', {'form': form})
+    else:
+        form = ImagemForm()
+        return render(request, 'paginas/imagem/cad_imagem.html', {'form': form})
 
 
 @login_required

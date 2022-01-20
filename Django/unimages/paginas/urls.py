@@ -21,11 +21,13 @@ urlpatterns = [
     path('planos', views.planos, name='planos'),
     path('cadastrar_plano/',
          views.cadastrar_plano, name='cadastrar_plano'),
-    path('editar_plano', # /<int:id>/
+    path('editar_plano/<int:id>/',
          views.editar_plano, name='editar_plano'),
-    path('deletar_plano', #/<int:id>/
+    path('deletar_plano/<int:id>/',
          views.deletar_plano, name='deletar_plano'),
     path('plano/<int:id>/',
          views.plano,
          name='autor'),
+    path('cadastrar_imagem/',
+         views.cadastrar_imagem, name='cadastrar_imagem'),
 ]

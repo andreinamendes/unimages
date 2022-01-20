@@ -100,6 +100,10 @@ class Autor(models.Model):
         ordering = ('created_at',)
 
 
+
+def upload_image(instance, filename):
+    return "{instance.id}-{filename}"
+
 class Imagem(models.Model):
     # Titulo: titulo da imagem.
     titulo = models.CharField(
@@ -149,6 +153,8 @@ class Imagem(models.Model):
         null=False,
         blank=False
     )
+
+    arquivo = models.ImageField(upload_to=upload_image, null=False, blank=False)
 
     created_at = models.DateTimeField(
         auto_now_add=True

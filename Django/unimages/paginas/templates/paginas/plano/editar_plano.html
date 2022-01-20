@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %} ## Carregando a biblioteca
 
-{% block title %}Jecode - editar quadro{% endblock %}
+{% block title %}Unimages - Editar plano{% endblock %}
 
 {% block content %}
 
@@ -23,7 +23,7 @@
 
             {{ form | crispy }}
             <button type="submit" class="btn btn-primary btn-block">Salvar</button>
-            <p class="form-p">Deseja voltar a home? <a href="{% url 'quadros:quadros' %}">Clique aqui!</a>
+            <p class="form-p">Deseja voltar a home? <a href="{% url 'paginas:home' %}">Clique aqui!</a>
             </p>
         </form>
     </div>

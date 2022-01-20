@@ -11,12 +11,20 @@ class AutorForm(forms.ModelForm):
         conta = forms.CharField()
         pix = forms.CharField()
 
-class PlanosForm(forms.ModelForm):
+
+class PlanoForm(forms.ModelForm):
     class Meta:
         model = Plano
-        fields = ['nome', 'descricao', 'valor','duracao', 'pix']
+        fields = ['nome', 'descricao', 'valor', 'duracao', 'pix']
         nome = forms.CharField()
         descricao = forms.CharField()
-        valor = forms.CharField()
+        valor = forms.FloatField()
         duracao = forms.CharField()
         pix = forms.CharField()
+
+
+class ImagemForm(forms.ModelForm):
+    class Meta:
+        model = Imagem
+        fields = ['titulo', 'descricao', 'valor', 'categoria', 'resolucao', 'formato', 'link', 'arquivo']
+    

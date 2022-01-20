@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %} ## Carregando a biblioteca
 
-{% block title %}Jecode - editar quadro{% endblock %}
+{% block title %}Unimages - Cadastrar imagem{% endblock %}
 
 {% block content %}
 
@@ -18,12 +18,12 @@
 <main class="main-forms">
     <div class="container-forms">
         <form method="post" class="forms">
-            <h4>Editar plano</h4>
+            <h4>Cadastrar imagem</h4>
             {% csrf_token %}
 
             {{ form | crispy }}
             <button type="submit" class="btn btn-primary btn-block">Salvar</button>
-            <p class="form-p">Deseja voltar a home? <a href="{% url 'quadros:quadros' %}">Clique aqui!</a>
+            <p class="form-p">Deseja voltar a home? <a href="{% url 'paginas:home' %}">Clique aqui!</a>
             </p>
         </form>
     </div>
