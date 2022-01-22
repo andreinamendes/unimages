@@ -15,15 +15,21 @@
 </ul>
 {% endif %}
 
+<!--
 <a class="nav-link" href="{% url 'paginas:cadastrar_autor'%}">Cad autor</a>
 <a class="nav-link" href="{% url 'paginas:editar_autor'%}">Editar autor</a>
 <a class="nav-link" href="{% url 'paginas:deletar_autor'%}">Delete autor</a>
 <a class="nav-link" href="{% url 'paginas:cadastrar_plano'%}">Cad plano</a>
 <a class="nav-link" href="{% url 'paginas:cadastrar_imagem'%}">Cad imagem</a>
+-->
 
 {% for i in imagens %}
-    <img src="{{i.link}}" alt="imagem"
-    height="200" width="200"/>
+    <div class="img">
+        <a target="_blank" href="#">
+            <img src="{{i.arquivo.url}}" alt="Forest" width="300" height="200">
+        </a>
+        <div class="desc">{{i.descricao}}</div>
+    </div>
 {% endfor %}
 
 

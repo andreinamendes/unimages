@@ -14,7 +14,8 @@ from .forms import *
 
 @login_required
 def index(request):
-    return render(request, 'paginas/index.html')
+    imagens = listar_imagens(request)
+    return render(request, 'paginas/index.html', {'imagens': imagens})
 
 
 @login_required
@@ -26,18 +27,19 @@ def listar_imagens(request):
 @login_required
 def home(request):
     imagens = listar_imagens(request)
-    print(imagens)
     return render(request, 'paginas/home.html', {'imagens': imagens})
 
 
 @login_required
 def sobre(request):
-    return render(request, 'paginas/sobre.html')
+    imagens = listar_imagens(request)
+    return render(request, 'paginas/sobre.html', {'imagens': imagens})
 
 
 @login_required
 def contatos(request):
-    return render(request, 'paginas/contatos.html')
+    imagens = listar_imagens(request)
+    return render(request, 'paginas/contatos.html', {'imagens': imagens})
 
 
 @login_required
@@ -178,7 +180,7 @@ def listar_imagem(request, id):
 def cadastrar_imagem(request):
     autor = get_object_or_404(Autor, usuario=request.user)
     if request.method == 'POST':
-        form = ImagemForm(request.POST)
+        form = ImagemForm(request.POST, request.FILES)
         if form.is_valid():
             imagem = form.save(commit=False)
             imagem.autor = autor

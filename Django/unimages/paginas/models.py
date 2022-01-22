@@ -100,9 +100,49 @@ class Autor(models.Model):
         ordering = ('created_at',)
 
 
+class Categoria_imagem(models.Model):
+    # Banco: nome do banco.
+    nome = models.CharField(
+        max_length=128,
+        null=False,
+        blank=False,
+    )
 
-def upload_image(instance, filename):
-    return "{instance.id}-{filename}"
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    class Meta:
+
+        verbose_name_plural = 'Categorias'
+        ordering = ('created_at',)
+
+
+class Formato_imagem(models.Model):
+    # Banco: nome do banco.
+    nome = models.CharField(
+        max_length=128,
+        null=False,
+        blank=False,
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    class Meta:
+
+        verbose_name_plural = 'Categorias'
+        ordering = ('created_at',)
+
 
 class Imagem(models.Model):
     # Titulo: titulo da imagem.
@@ -125,11 +165,8 @@ class Imagem(models.Model):
     )
 
     # Titulo: titulo da imagem.
-    categoria = models.CharField(
-        max_length=128,
-        null=False,
-        blank=False
-    )
+    categoria = models.ForeignKey(
+        Categoria_imagem, null=False, on_delete=models.CASCADE)
 
     # Titulo: titulo da imagem.
     resolucao = models.CharField(
@@ -139,22 +176,12 @@ class Imagem(models.Model):
     )
 
     # Titulo: titulo da imagem.
-    formato = models.CharField(
-        max_length=128,
-        null=False,
-        blank=False
-    )
+    formato = models.ForeignKey(
+        Formato_imagem, null=False, on_delete=models.CASCADE)
 
     autor = models.ForeignKey(Autor, null=False, on_delete=models.CASCADE)
 
-    # Titulo: titulo da imagem.
-    link = models.CharField(
-        max_length=128,
-        null=False,
-        blank=False
-    )
-
-    arquivo = models.ImageField(upload_to=upload_image, null=False, blank=False)
+    arquivo = models.ImageField(upload_to='imagens/', null=False, blank=False)
 
     created_at = models.DateTimeField(
         auto_now_add=True

@@ -1,4 +1,5 @@
 from django import forms
+from bootstrap_modal_forms.forms import BSModalModelForm
 from .models import *
 
 
@@ -26,5 +27,5 @@ class PlanoForm(forms.ModelForm):
 class ImagemForm(forms.ModelForm):
     class Meta:
         model = Imagem
-        fields = ['titulo', 'descricao', 'valor', 'categoria', 'resolucao', 'formato', 'link', 'arquivo']
+        fields = ['titulo', 'descricao', 'valor', 'categoria', 'resolucao', 'formato', 'arquivo']
     
