@@ -27,5 +27,17 @@ class PlanoForm(forms.ModelForm):
 class ImagemForm(forms.ModelForm):
     class Meta:
         model = Imagem
-        fields = ['titulo', 'descricao', 'valor', 'categoria', 'resolucao', 'formato', 'arquivo']
-    
+        fields = ['titulo', 'descricao', 'valor',
+                  'categoria', 'resolucao', 'formato', 'arquivo']
+
+
+class CategoriaImagemForm(forms.ModelForm):
+    class Meta:
+        model = Categoria_imagem
+        fields = ['nome']
+
+
+class FormatoImagemForm(forms.ModelForm):
+    class Meta:
+        model = Formato_imagem
+        fields = ['nome']

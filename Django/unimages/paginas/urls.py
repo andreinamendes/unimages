@@ -30,4 +30,8 @@ urlpatterns = [
          name='autor'),
     path('cadastrar_imagem/',
          views.cadastrar_imagem, name='cadastrar_imagem'),
+    path('cadastrar_categoria/',
+         views.cadastrar_categoria_imagem, name='cadastrar_categoria'),
+    path('cadastrar_formato/',
+         views.cadastrar_formato_imagem, name='cadastrar_formato'),
 ]

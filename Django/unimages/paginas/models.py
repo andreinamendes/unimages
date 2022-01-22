@@ -99,6 +99,9 @@ class Autor(models.Model):
         verbose_name_plural = 'Autores'
         ordering = ('created_at',)
 
+    def __str__(self):
+        return self.usuario.username
+
 
 class Categoria_imagem(models.Model):
     # Banco: nome do banco.
@@ -121,6 +124,9 @@ class Categoria_imagem(models.Model):
         verbose_name_plural = 'Categorias'
         ordering = ('created_at',)
 
+    def __str__(self):
+        return self.nome
+
 
 class Formato_imagem(models.Model):
     # Banco: nome do banco.
@@ -142,6 +148,9 @@ class Formato_imagem(models.Model):
 
         verbose_name_plural = 'Categorias'
         ordering = ('created_at',)
+
+    def __str__(self):
+        return self.nome
 
 
 class Imagem(models.Model):
@@ -195,6 +204,9 @@ class Imagem(models.Model):
 
         verbose_name_plural = 'Imagens'
         ordering = ('created_at',)
+
+    def __str__(self):
+        return self.titulo
 
 
 class Imagem_favorita(models.Model):

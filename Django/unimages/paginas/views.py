@@ -205,3 +205,39 @@ def deletar_imagem(request, id):
     imagem.delete()  # Deletando o quadro
     messages.info(request, 'Imagem deletada com sucesso.')
     return redirect('/home/')
+
+
+@login_required
+def cadastrar_categoria_imagem(request):
+    if request.method == 'POST':
+        form = CategoriaImagemForm(request.POST)
+        if form.is_valid():
+            categoria = form.save(commit=False)
+            categoria.save()
+            messages.info(request, 'Categoria salva com sucesso.')
+            return redirect('/home')
+        else:
+            # ser_autor
+            return render(request, 'paginas/categoria/cad_categoria.html', {'form': form})
+    else:
+        form = CategoriaImagemForm()
+        # ser_autor
+        return render(request, 'paginas/categoria/cad_categoria.html', {'form': form})
+
+
+@login_required
+def cadastrar_formato_imagem(request):
+    if request.method == 'POST':
+        form = FormatoImagemForm(request.POST)
+        if form.is_valid():
+            formato = form.save(commit=False)
+            formato.save()
+            messages.info(request, 'Formato salvo com sucesso.')
+            return redirect('/home')
+        else:
+            # ser_autor
+            return render(request, 'paginas/formato/cad_formato.html', {'form': form})
+    else:
+        form = FormatoImagemForm()
+        # ser_autor
+        return render(request, 'paginas/formato/cad_formato.html', {'form': form})
