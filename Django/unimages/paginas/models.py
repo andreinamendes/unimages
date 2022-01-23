@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 
 # Quadro: contém o quadro.
 
@@ -59,7 +59,7 @@ class Plano(models.Model):
 class Autor(models.Model):
 
   # Usuario: criador do Quadro (chave estrangeira).
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    usuario = models.OneToOneField('usuarios.User', on_delete=models.CASCADE)
 
     # Banco: nome do banco.
     banco = models.CharField(
@@ -212,7 +212,8 @@ class Imagem(models.Model):
 class Imagem_favorita(models.Model):
 
   # Usuario: criador do Quadro (chave estrangeira).
-    usuario = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(
+        'usuarios.User', null=False, on_delete=models.CASCADE)
     imagem = models.ForeignKey(Imagem, null=False, on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(
@@ -231,7 +232,7 @@ class Imagem_favorita(models.Model):
 
 class Cartao(models.Model):
 
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey('usuarios.User', on_delete=models.CASCADE)
 
     # Banco: nome do banco.
     nome_completo = models.CharField(
