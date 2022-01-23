@@ -241,3 +241,30 @@ def cadastrar_formato_imagem(request):
         form = FormatoImagemForm()
         # ser_autor
         return render(request, 'paginas/formato/cad_formato.html', {'form': form})
+
+@login_required
+def favoritar_imagem(request, id_imagem):
+    usuario = request.usuario
+    imagem = Imagem.objects.get(id=id_imagem)
+    #imagem = listar_imagem(id)
+    #imagem.delete()  # Deletando o quadro
+    imagem.save()
+    messages.info(request, 'Adicionada aos favoritos.')
+    #return redirect('/imagem')
+
+@login_required
+def cadastrar_assinante(request):
+    if request.method == 'POST':
+        form = AssinanteForm(request.POST)
+        if form.is_valid():
+            assinante = form.save(commit=False)
+            assinante.usuario = request.user
+            assinante.save()
+            messages.info(request, 'Parabens! Assinatura feita com sucesso!')
+            return redirect('/home')
+        else:
+            return render(request, 'paginas/assinante/ser_assinante.html', {'form': form})
+    else:
+        form = AssinanteForm()
+        return render(request, 'paginas/assinante/ser_assinante.html', {'form': form})
+    #pass

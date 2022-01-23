@@ -34,4 +34,8 @@ urlpatterns = [
          views.cadastrar_categoria_imagem, name='cadastrar_categoria'),
     path('cadastrar_formato/',
          views.cadastrar_formato_imagem, name='cadastrar_formato'),
+    path('cadastrar_assinante/',
+         views.cadastrar_assinante, name='cadastrar_assinante'),
+    path('favoritar_imagem/',
+         views.favoritar_imagem, name='favoritar_imagem'),
 ]
