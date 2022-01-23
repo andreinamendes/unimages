@@ -2,10 +2,14 @@ from django.contrib import admin
 from django.contrib.auth import admin as auth_admin
 
 from .forms import UserChangeForm, UserCreationForm
-from .models import User
+from .models import CustomUser
 
 
-@admin.register(User)
+@admin.register(CustomUser)
 class UserAdmin(auth_admin.UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
+    model = CustomUser
+    fieldsets = auth_admin.UserAdmin.fieldsets + (
+        ("Informações Pessoais", {"fields": ("bio",)}),
+    )
