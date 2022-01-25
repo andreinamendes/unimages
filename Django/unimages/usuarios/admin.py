@@ -9,7 +9,4 @@ from .models import CustomUser
 class UserAdmin(auth_admin.UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
-    model = CustomUser
-    fieldsets = auth_admin.UserAdmin.fieldsets + (
-        ("Informações Pessoais", {"fields": ("bio",)}),
-    )
+    #model = CustomUser

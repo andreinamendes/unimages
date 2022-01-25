@@ -168,8 +168,9 @@ def deletar_autor(request):
 
 
 @login_required
-def imagens(request):
-    return render(request, 'paginas/imagens.html')
+def imagem(request, id):
+    imagem = get_object_or_404(Imagem, id=id)
+    return render(request, 'paginas/imagem/imagem.html', {'imagem': imagem})
 
 
 def listar_imagem(request, id):
@@ -242,15 +243,28 @@ def cadastrar_formato_imagem(request):
         # ser_autor
         return render(request, 'paginas/formato/cad_formato.html', {'form': form})
 
+
 @login_required
-def favoritar_imagem(request, id_imagem):
-    usuario = request.usuario
-    imagem = Imagem.objects.get(id=id_imagem)
-    #imagem = listar_imagem(id)
-    #imagem.delete()  # Deletando o quadro
-    imagem.save()
-    messages.info(request, 'Adicionada aos favoritos.')
-    #return redirect('/imagem')
+def favoritar_imagem(request, id):
+    imagem = get_object_or_404(Imagem, id=id)
+    imagem_favorita = Imagem_favorita
+    imagem_favorita.imagem = imagem
+    imagem_favorita.usuario = request.user
+    imagem_favorita.save()
+    messages.info(request, 'Formato salvo com sucesso.')
+    return redirect('/home')
+
+
+@login_required
+def download_imagem(request, id):
+    imagem = get_object_or_404(Imagem, id=id)
+    imagem_favorita = Imagem_favorita
+    imagem_favorita.imagem = imagem
+    imagem_favorita.usuario = request.user
+    imagem_favorita.save()
+    messages.info(request, 'Formato salvo com sucesso.')
+    return redirect('/home')
+
 
 @login_required
 def cadastrar_assinante(request):
@@ -267,4 +281,4 @@ def cadastrar_assinante(request):
     else:
         form = AssinanteForm()
         return render(request, 'paginas/assinante/ser_assinante.html', {'form': form})
-    #pass
+    # pass

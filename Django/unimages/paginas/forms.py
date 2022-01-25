@@ -23,6 +23,7 @@ class PlanoForm(forms.ModelForm):
         duracao = forms.CharField()
         pix = forms.CharField()
 
+
 class AssinanteForm(forms.ModelForm):
     class Meta:
         model = Assinante
@@ -49,3 +50,9 @@ class FormatoImagemForm(forms.ModelForm):
     class Meta:
         model = Formato_imagem
         fields = ['nome']
+
+
+class ImagemFavoritaForm(forms.ModelForm):
+    class Meta:
+        model = Imagem_favorita
+        fields = ['usuario', 'imagem']

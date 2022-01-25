@@ -90,7 +90,9 @@
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for i in imagens %}
                     <li>
-                      <a class="nav-link" href="{% url 'paginas:home'%}">{{i.titulo}}</a>
+                      <a class="nav-link" href="{% url 'paginas:home'%}"
+                        >{{i.titulo}}</a
+                      >
                     </li>
                     {% endfor %}
                     <li>
@@ -183,22 +185,22 @@
         </nav>
       </heade>
     </div>
-    {% block content %} {% endblock %}
+    <main class="conteudo">{% block content %} {% endblock %}</main>
     <footer class="footer navbar-fixed-bottom">
       <ul class="social_list">
         <li>
           <a class="" href="https://facebook.com/"
-            ><i class="fa fa-facebook">Facebook</i></a
+            ><i class="fab fa-facebook">Facebook</i></a
           >
         </li>
         <li>
           <a class="" href="https://instagram.com/"
-            ><i class="fa fa-instagram">Instagram</i></a
+            ><i class="fab fa-instagram">Instagram</i></a
           >
         </li>
         <li>
           <a class="" href="https://twitter.com/"
-            ><i class="fa fa-twitter">Twitter</i></a
+            ><i class="fab fa-twitter">Twitter</i></a
           >
         </li>
       </ul>
