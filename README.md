@@ -79,7 +79,6 @@ Os requisitos especificados anteriormente assim como os dados padrão para usuá
 O mesmo contém a listagem dos atributos assim como seus valores e se são chaves primárias, estrangeiras ou os dois. As ligações estão especificadas por setas diferenciadas representando assim as ligações (1, n), (n, 1) e (n, n).
 
 ![](https://github.com/andreinamendes/unimages/blob/main/docs/ModeloER.jpeg)
-<<<<<<< HEAD
 
 ## Desenvolvimento da Aplicação
 
@@ -112,5 +111,3 @@ O mesmo contém a listagem dos atributos assim como seus valores e se são chave
   - [Hist-23] Como usuário comum, eu gostaria de realizar uma assinatura premium
   - [Hist-24] Como usuário comum, gostaria de realizar uma assinatura de um plano universitário por meio da confirmação de vínculo institucional*
   - [Hist-27] Como usuário assinante, eu gostaria de alterar a minha assinatura vigente
-=======
->>>>>>> 934a83b9a9756f445af5e3ddcf744a4a25824309
