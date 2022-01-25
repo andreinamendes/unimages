@@ -282,3 +282,22 @@ def cadastrar_assinante(request):
         form = AssinanteForm()
         return render(request, 'paginas/assinante/ser_assinante.html', {'form': form})
     # pass
+
+
+@login_required
+def estudante(request):
+    plano = get_object_or_404(Plano, id=1)
+    if request.method == 'POST':
+        form = EstudanteForm(request.POST, request.FILES)
+        if form.is_valid():
+            estudante = form.save(commit=False)
+            estudante = estudante.usuario = request.user
+            estudante = estudante.plano = plano
+            estudante = estudante.save()
+            messages.info(request, 'Imagem salva com sucesso.')
+            return redirect('/home')
+        else:
+            return render(request, 'paginas/estudante/sou_estudante.html', {'form': form})
+    else:
+        form = EstudanteForm()
+        return render(request, 'paginas/estudante/sou_estudante.html', {'form': form})

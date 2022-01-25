@@ -19,6 +19,8 @@ class Plano(models.Model):
 
     # Descricao: Descrição do plano.
     descricao = models.TextField(
+        max_length=258,
+        null=False,
         blank=True
     )
 
@@ -36,7 +38,8 @@ class Plano(models.Model):
 
     # Pix: pix do plano.
     pix = models.TextField(
-        blank=True
+        blank=True,
+        unique=True
     )
 
     created_at = models.DateTimeField(
@@ -70,13 +73,13 @@ class Autor(models.Model):
     )
 
     agencia = models.CharField(
-        max_length=128,
+        max_length=4,
         null=False,
         blank=False,
     )
 
     conta = models.CharField(
-        max_length=128,
+        max_length=10,
         null=False,
         blank=False,
         unique=True
@@ -110,6 +113,7 @@ class Categoria_imagem(models.Model):
         max_length=128,
         null=False,
         blank=False,
+        unique=True
     )
 
     created_at = models.DateTimeField(
@@ -135,6 +139,7 @@ class Formato_imagem(models.Model):
         max_length=128,
         null=False,
         blank=False,
+        unique=True
     )
 
     created_at = models.DateTimeField(
@@ -154,6 +159,32 @@ class Formato_imagem(models.Model):
         return self.nome
 
 
+class Estabelecimento_de_ensino(models.Model):
+    # Banco: nome do banco.
+    nome = models.CharField(
+        max_length=128,
+        null=False,
+        blank=False,
+        unique=True
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    class Meta:
+
+        verbose_name_plural = 'Estabelecimentos de ensino'
+        ordering = ('created_at',)
+
+    def __str__(self):
+        return self.nome
+
+
 class Imagem(models.Model):
     # Titulo: titulo da imagem.
     titulo = models.CharField(
@@ -165,6 +196,7 @@ class Imagem(models.Model):
 
     # Descricao: Descrição do plano.
     descricao = models.TextField(
+        max_length=258,
         blank=True
     )
 
@@ -180,7 +212,7 @@ class Imagem(models.Model):
 
     # Titulo: titulo da imagem.
     resolucao = models.CharField(
-        max_length=128,
+        max_length=80,
         null=False,
         blank=False
     )
@@ -298,3 +330,43 @@ class Assinante(models.Model):
 
         verbose_name_plural = 'Assinantes'
         ordering = ('created_at',)
+
+
+class Estudante(models.Model):
+
+    usuario = models.OneToOneField(
+        'usuarios.CustomUser', on_delete=models.CASCADE)
+
+    plano = models.ForeignKey(Plano, on_delete=models.CASCADE)
+
+    estabelecimento_de_ensino = models.ForeignKey(
+        Estabelecimento_de_ensino, on_delete=models.CASCADE)
+
+    data_de_inicio = models.DateField(
+        null=False,
+        blank=False,
+    )
+
+    data_final = models.DateField(
+        null=False,
+        blank=False,
+    )
+
+    comprovante_de_matricula = models.FileField(upload_to='arquivos/')
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    class Meta:
+
+        verbose_name_plural = 'Estudantes'
+        ordering = ('created_at',)
+    
+    def __str__(self):
+        return self.usuario.username
+

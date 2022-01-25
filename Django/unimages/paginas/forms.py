@@ -56,3 +56,14 @@ class ImagemFavoritaForm(forms.ModelForm):
     class Meta:
         model = Imagem_favorita
         fields = ['usuario', 'imagem']
+
+
+class EstudanteForm(forms.ModelForm):
+    class Meta:
+        model = Estudante
+        fields = ['estabelecimento_de_ensino', 'data_de_inicio', 'data_final',
+                  'comprovante_de_matricula']
+        widgets = {
+            'data_de_inicio': forms.DateInput(attrs={'type': 'date'}),
+            'data_final': forms.DateInput(attrs={'type': 'date'})
+        }
