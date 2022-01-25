@@ -21,7 +21,7 @@ Para  mais detalhes sobre o projeto fica a disposição o [Documento de Visão](
 
 Os requisitos foram organizados na ferramenta de gerenciamento de tarefas Trello. Abaixo segue o link do quadro criado, e nele, especificado cada história de usuário com seus respectivos testes.
 
-Link: <https://github.com/andreinamendes/unimages/blob/main/docs/Unimages.pdf>
+Link: <https://trello.com/invite/b/7JqyV2FX/0ca68abd02cd901cf91ca74aa6979426/unimages>
 
 ### Requisitos Funcionais
 
@@ -73,12 +73,13 @@ Link: <https://github.com/andreinamendes/unimages/blob/main/docs/Unimages.pdf>
   - [RNF-9] Como usuário comum, gostaria de poder acessar os dados referentes à compra das minhas imagens sempre que eu quiser.
   - [RNF-10] Como usuário comum, gostaria de poder acessar a listagem de imagens sempre que eu precisar.
 
-## Modelagem Entidade Relacionamento do banco de dados
+## Modelagem Entidade Relacionamento
 
 Os requisitos especificados anteriormente assim como os dados padrão para usuários utilizados no desenvolvimento de softwares foram considerados para o desenvolvimento do Modelo Entidade Relacionamento especificado abaixo.  
 O mesmo contém a listagem dos atributos assim como seus valores e se são chaves primárias, estrangeiras ou os dois. As ligações estão especificadas por setas diferenciadas representando assim as ligações (1, n), (n, 1) e (n, n).
 
 ![](https://github.com/andreinamendes/unimages/blob/main/docs/ModeloER.jpeg)
+<<<<<<< HEAD
 
 ## Desenvolvimento da Aplicação
 
@@ -111,3 +112,5 @@ O mesmo contém a listagem dos atributos assim como seus valores e se são chave
   - [Hist-23] Como usuário comum, eu gostaria de realizar uma assinatura premium
   - [Hist-24] Como usuário comum, gostaria de realizar uma assinatura de um plano universitário por meio da confirmação de vínculo institucional*
   - [Hist-27] Como usuário assinante, eu gostaria de alterar a minha assinatura vigente
+=======
+>>>>>>> 934a83b9a9756f445af5e3ddcf744a4a25824309

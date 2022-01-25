@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Unimages{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    {% if user.is_authenticated %}
+    <h1>Bem-vindo ao Unimages</h1>
+    {% else %}
+    <h1>O que é o Unimages?</h1>
+    <p>É uma aplicação Web.</p>
+    {% endif %}
+</div>
+{% endblock %}
