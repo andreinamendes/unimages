@@ -27,7 +27,7 @@ class PlanoForm(forms.ModelForm):
 class AssinanteForm(forms.ModelForm):
     class Meta:
         model = Assinante
-        fields = ['data_de_inicio', 'data_final', 'plano']
+        fields = ['plano']
         data_de_inicio = forms.DateField()
         data_final = forms.DateField()
         plano = forms.CharField()
@@ -55,15 +55,14 @@ class FormatoImagemForm(forms.ModelForm):
 class ImagemFavoritaForm(forms.ModelForm):
     class Meta:
         model = Imagem_favorita
-        fields = ['usuario', 'imagem']
+        fields = []
 
 
 class EstudanteForm(forms.ModelForm):
     class Meta:
         model = Estudante
-        fields = ['estabelecimento_de_ensino', 'data_de_inicio', 'data_final',
-                  'comprovante_de_matricula']
+        fields = ['estabelecimento_de_ensino', 'data_final',
+                  'comprovante_de_matricula', 'plano']
         widgets = {
-            'data_de_inicio': forms.DateInput(attrs={'type': 'date'}),
             'data_final': forms.DateInput(attrs={'type': 'date'})
         }

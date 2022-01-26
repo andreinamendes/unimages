@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %} ## Carregando a biblioteca
 
-{% block title %}Unimages - Cadastrar imagem{% endblock %}
+{% block title %}Unimages - Sou estudante{% endblock %}
 
 {% block content %}
 
@@ -18,7 +18,7 @@
 <main class="main-forms">
     <div class="container-forms">
         <form method="post" class="forms" enctype="multipart/form-data">
-            <h4>Cadastrar imagem</h4>
+            <h4>Sou estudante</h4>
             {% csrf_token %}
 
             {{ form | crispy }}

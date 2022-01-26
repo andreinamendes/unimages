@@ -29,11 +29,19 @@
         <div class="img">
             <a href="{% url 'paginas:imagem' i.id %}">
                 <img src="{{i.arquivo.url}}" alt="Forest" width="300" height="200">
-                <a  href="{% url 'paginas:favoritar_imagem' i.id %}">
-                    <i class="fa fa-heart"></i>
-                    Favoritar
-                </a>
             </a>
+            <form method="post" action="{% url 'paginas:favoritar_imagem' i.id %}">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit"><i class="fa fa-heart"></i>
+                    Favoritar</button>
+            </form>
+            <form method="post" action="{% url 'paginas:download_imagem' i.id %}">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit"><i class="fa fa-download"></i>
+                    Download</button>
+            </form>
             <div class="desc">{{i.descricao}}</div>
         </div>
     {% endfor %}

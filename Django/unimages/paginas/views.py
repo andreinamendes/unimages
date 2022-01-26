@@ -1,9 +1,10 @@
+from time import time
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-
+from datetime import date, timedelta
 from .models import *
 from .forms import *
 
@@ -21,6 +22,12 @@ def index(request):
 @login_required
 def listar_imagens(request):
     return Imagem.objects.all().order_by(
+        '-created_at')
+
+
+@login_required
+def listar_imagens_favoritas(request):
+    return Imagem_favorita.objects.all().order_by(
         '-created_at')
 
 
@@ -247,22 +254,29 @@ def cadastrar_formato_imagem(request):
 @login_required
 def favoritar_imagem(request, id):
     imagem = get_object_or_404(Imagem, id=id)
-    imagem_favorita = Imagem_favorita
-    imagem_favorita.imagem = imagem
-    imagem_favorita.usuario = request.user
-    imagem_favorita.save()
-    messages.info(request, 'Formato salvo com sucesso.')
-    return redirect('/home')
+    if request.method == 'POST':
+        form = ImagemFavoritaForm(request.POST)
+        if form.is_valid():
+            imagem_favorita = form.save(commit=False)
+            imagem_favorita.imagem = imagem
+            imagem_favorita.usuario = request.user
+            imagem_favorita.save()
+            messages.info(request, 'salva com sucesso.')
+            return redirect('/home')
+        else:
+            messages.info(request, 'Já foi salva.')
+            return redirect('/home')
+
+
+@login_required
+def imagens_favoritas(request):
+    imagens_favoritas = listar_imagens_favoritas(request)
+    return render(request, 'paginas/imagem/imagens_favoritas.html', {'imagens_favoritas': imagens_favoritas})
 
 
 @login_required
 def download_imagem(request, id):
-    imagem = get_object_or_404(Imagem, id=id)
-    imagem_favorita = Imagem_favorita
-    imagem_favorita.imagem = imagem
-    imagem_favorita.usuario = request.user
-    imagem_favorita.save()
-    messages.info(request, 'Formato salvo com sucesso.')
+    img = get_object_or_404(Imagem, id=id)
     return redirect('/home')
 
 
@@ -273,6 +287,8 @@ def cadastrar_assinante(request):
         if form.is_valid():
             assinante = form.save(commit=False)
             assinante.usuario = request.user
+            assinante.data_de_inicio = date.today()
+            assinante.data_final = date.today() + timedelta(days=364)
             assinante.save()
             messages.info(request, 'Parabens! Assinatura feita com sucesso!')
             return redirect('/home')
@@ -286,15 +302,15 @@ def cadastrar_assinante(request):
 
 @login_required
 def estudante(request):
-    plano = get_object_or_404(Plano, id=1)
+    #plano = get_object_or_404(Plano, nome="Estudante")
     if request.method == 'POST':
         form = EstudanteForm(request.POST, request.FILES)
         if form.is_valid():
             estudante = form.save(commit=False)
-            estudante = estudante.usuario = request.user
-            estudante = estudante.plano = plano
+            estudante.usuario = request.user
+            #estudante = estudante.plano = plano
             estudante = estudante.save()
-            messages.info(request, 'Imagem salva com sucesso.')
+            messages.info(request, 'Estudante salvo com sucesso.')
             return redirect('/home')
         else:
             return render(request, 'paginas/estudante/sou_estudante.html', {'form': form})

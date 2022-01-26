@@ -42,6 +42,8 @@ urlpatterns = [
          views.download_imagem, name='download_imagem'),
     path('imagem/<int:id>/',
          views.imagem, name='imagem'),
+    path('imagens_favoritas/',
+         views.imagens_favoritas, name='imagens_favoritas'),
     path('estudante/',
          views.estudante, name='estudante'),
 ]

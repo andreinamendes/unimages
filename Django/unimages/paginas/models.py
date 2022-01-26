@@ -87,7 +87,8 @@ class Autor(models.Model):
 
     pix = models.CharField(
         max_length=128,
-        unique=True
+        unique=True,
+        blank=True,
     )
 
     created_at = models.DateTimeField(
@@ -342,17 +343,13 @@ class Estudante(models.Model):
     estabelecimento_de_ensino = models.ForeignKey(
         Estabelecimento_de_ensino, on_delete=models.CASCADE)
 
-    data_de_inicio = models.DateField(
-        null=False,
-        blank=False,
-    )
-
     data_final = models.DateField(
         null=False,
         blank=False,
     )
 
-    comprovante_de_matricula = models.FileField(upload_to='arquivos/')
+    comprovante_de_matricula = models.FileField(
+        upload_to='arquivos/')
 
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -366,7 +363,6 @@ class Estudante(models.Model):
 
         verbose_name_plural = 'Estudantes'
         ordering = ('created_at',)
-    
+
     def __str__(self):
         return self.usuario.username
-
