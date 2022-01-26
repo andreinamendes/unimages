@@ -6,9 +6,9 @@
 
 {% block content %}
 
-<main class="main-login">
-    <div class="container-login">
-        <form method="post" class="form-login" action="{% url 'account_logout' %}">
+<main class="main-forms">
+    <div class="container-forms">
+        <form method="post" class="forms" action="{% url 'account_logout' %}">
             <h4>Sair do Jecode</h4>
             <p>Você tem certeza que deseja sair?</p>
             {% csrf_token %}

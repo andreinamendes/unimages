@@ -1,14 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 * {
     padding: 0;
     margin: 0;
     /*  incluem o tamanho padding size e a propriedade border, mas não incluem a propriedade margin.*/
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
 }
 
+
 .body {
-    width: 100%;
-    height: 100%;
+    background: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Roboto", sans-serif;
+    padding: 40px;
 }
 
 a {
@@ -60,51 +66,119 @@ a {
 .forms {
     display: flex;
     flex-direction: column;
-    /*align-items: center;*/
     width: 100%;
     max-width: 32rem;
-    background-color: #fff;
+    background-color: rgb(6, 14, 56);
     padding: 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.15);
 }
 
+.container-forms h4 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative;
+    text-align: center;
+}
+
+.forms label {
+    width: 100%;
+    color: white;
+    align-self: flex-start;
+    transition: 0.15s linear;
+}
+
+.botao-forms {
+    font-size: 0.8125rem;
+    line-height: 0.1rem;
+    font-weight: 700;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: white;
+    color: rgb(0, 9, 59);
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    transition: 0.25s;
+}
+
 /* Login*/
 
 .main-login {
-    background: linear-gradient(45deg, #8e2de2, #4a00e0);
+    background: white;
     background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
-    /*
-    display: grid;
-    place-items: center;
-    */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .container-login {
-    margin: 2rem;
+    display: flex;
+    width: 90%;
+}
+
+.container-imagem-login {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-top: 70px;
 }
 
 .form-login {
     display: flex;
     flex-direction: column;
-    /*align-items: center;*/
     width: 100%;
     max-width: 28rem;
-    background-color: #fff;
+    max-height: 28rem;
+    background-color: rgb(0, 9, 59);
+    color: white;
     padding: 4rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.6);
+}
+
+.form-login input {
+    color: white;
+    border: 0;
+    background-color: transparent;
+    border-bottom: solid 1.5px;
+}
+
+.botao-login {
+    font-size: 0.8125rem;
+    line-height: 0.1rem;
+    font-weight: 700;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: white;
+    color: rgb(0, 9, 59);
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    transition: 0.25s;
+}
+
+@media (max-width: 800px) {
+    .container-login {
+        margin: 2rem;
+    }
+
+    .container-imagem-login {
+        display: none;
+    }
 }
 
 /* Cadastro */
 
 .main-cadastro {
-    background: linear-gradient(45deg, #8e2de2, #4a00e0);
+    background: white;
     background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
@@ -127,33 +201,34 @@ a {
     /*align-items: center;*/
     width: 100%;
     max-width: 32rem;
-    background-color: #fff;
+    background-color: rgb(0, 9, 59);
     padding: 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.15);
 }
 
-.form-cadastro label, .form-login label, .forms label {
+.form-cadastro label, .form-login label {
     width: 100%;
-    color: #777;
+    color: white;
     align-self: flex-start;
     transition: 0.15s linear;
 }
 
-.form-p {
+.form-p-login, .form-p-cadastro {
     margin-top: 20px;
     text-align: center;
+    color: white;
 }
 
-.container-cadastro h4, .container-login h4, .container-forms h4 {
-    color: #00004e;
+.container-cadastro h4, .container-login h4 {
+    color: white;
     font-weight: 600;
     margin-bottom: 2rem;
     position: relative;
     text-align: center;
 }
 
-.botao {
+.botao-cadastro {
     font-size: 0.8125rem;
     line-height: 0.1rem;
     font-weight: 700;
@@ -161,8 +236,8 @@ a {
     text-transform: uppercase;
     padding: 1rem 2rem;
     cursor: pointer;
-    background: transparent;
-    color: linear-gradient(45deg, #8e2de2, #4a00e0);
+    background: white;
+    color: rgb(0, 9, 59);
     border: 1px solid currentColor;
     border-radius: 4px;
     margin-top: 0.5rem;
@@ -170,7 +245,7 @@ a {
 }
 
 .container-cadastro a, .container-login a {
-    color: #8e2de2;
+    color: white;
     list-style: none;
     text-decoration: none;
     pointer-events: auto;
@@ -199,7 +274,8 @@ ul li {
 .footer {
     width: 100%;
     bottom: 0;
-    background-color: #0d6efd;
+    background-color: rgb(0, 9, 59);
+    /*background-color: #0d6efd;*/
     color: #fff;
     text-align: center;
     padding: 0.4em;
