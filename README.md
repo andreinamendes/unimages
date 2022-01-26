@@ -1,5 +1,3 @@
-
-
 # Repositório Unimages
 
 Repositório voltado a todas as informações do projeto da disciplina de Engenharia de Software ministrada pelo professor Camilo Almendra.
@@ -81,3 +79,35 @@ Os requisitos especificados anteriormente assim como os dados padrão para usuá
 O mesmo contém a listagem dos atributos assim como seus valores e se são chaves primárias, estrangeiras ou os dois. As ligações estão especificadas por setas diferenciadas representando assim as ligações (1, n), (n, 1) e (n, n).
 
 ![](https://github.com/andreinamendes/unimages/blob/main/docs/ModeloER.jpeg)
+
+## Desenvolvimento da Aplicação
+
+### Tecnologias utilizadas
+
+- Front-End
+  - HTML, CSS e JS
+- Back-End
+  - Django, Python
+- Banco de dados
+  - SQLite
+
+### Histórias de usuário desenvolvidas
+
+- Simples
+
+  - [Hist-1] Como usuário comum, eu gostaria de realizar um cadastro no sistema
+  - [Hist-2] Como usuário comum, eu gostaria de realizar login
+  - [Hist-3] Como usuário comum, eu gostaria de realizar logout
+  
+- Definidas como obrigatórias a serem implementadas
+
+  - [Hist-4] Como usuário comum, eu gostaria de visualizar as fotos disponíveis
+  - [Hist-8] Como usuário comum, eu gostaria de ver quais planos estão disponíveis
+  - [Hist-10] Como criador de conteúdo, eu gostaria de realizar o upload de uma imagem no sistema
+  - [Hist-11] Como criador de conteúdo, eu gostaria de inserir os dados equivalentes a uma imagem associada a minha conta
+  - [Hist-17] Como usuário comum, eu gostaria de filtrar as imagens por categoria
+  - [Hist-21] Como usuário comum, eu gostaria de marcar uma imagem como favorito
+  - [Hist-22] Como usuário, comum, eu gostaria de demarcar uma imagem dos meus favoritos
+  - [Hist-23] Como usuário comum, eu gostaria de realizar uma assinatura premium
+  - [Hist-24] Como usuário comum, gostaria de realizar uma assinatura de um plano universitário por meio da confirmação de vínculo institucional*
+  - [Hist-27] Como usuário assinante, eu gostaria de alterar a minha assinatura vigente
