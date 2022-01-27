@@ -87,7 +87,11 @@ O mesmo contém a listagem dos atributos assim como seus valores e se são chave
 - Front-End
   - HTML, CSS e JS
 - Back-End
+<<<<<<< HEAD
   - Django, Python
+=======
+  - Django, python
+>>>>>>> 5398e46 (update README)
 - Banco de dados
   - SQLite
 
