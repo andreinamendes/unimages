@@ -1,4 +1,14 @@
-/* Sobre e contatos */
+/* index */
+
+.frase-a {
+    text-align: center;
+}
+
+.frase-b {
+    text-align: center; 
+}
+
+/* sobre e contatos */
 
 .container-text {
     display: flex;
