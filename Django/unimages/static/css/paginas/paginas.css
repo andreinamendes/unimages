@@ -1,0 +1,41 @@
+/* Sobre e contatos */
+
+.container-text {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container-text .title {    
+    margin: 0 auto;
+    text-align: center;
+}
+
+.container-text .text {
+    margin: 0 auto;
+    font-size: 18px;
+    margin-top: 5%;
+    text-align: justify;
+}
+
+.container-text .img {
+    width: 250px;
+    height: 250px;
+}
+
+/* Botão de adicionar */
+
+#add-link {
+    text-decoration: none;
+}
+
+/* Messages */
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
+}

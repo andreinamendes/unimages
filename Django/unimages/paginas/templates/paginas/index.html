@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Unimages{% endblock %}
+
+{% block content %}
+
+<div class="container-text">
+  {% if user.is_authenticated %}
+  <h1 class="title">Bem-vindo a Unimages</h1>
+  {% else %}
+  <h1>O que é a Unimages?</h1>
+  <p>É uma aplicação Web.</p>
+  {% endif %}
+  <div class="text">
+    <p>
+      Há 3 anos no mercado de imagem, a Unimages se consolidou como umas dos
+      maiores banco de imagens do país. Com uma plataforma de serviços de fácil
+      acesso e com um programa gratuito para alunos, oferecemos as mais
+      eficientes e inovadoras imagens, promovendo uma jornada de transformação e
+      com diferentes segmentos fotográficos. Juntos, somos mais de 300 mil
+      usuários no Brasil e no exterior, vem fazer parte desse time!
+    </p>
+  </div>
+</div>
+{% endblock %}
