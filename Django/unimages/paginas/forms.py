@@ -66,3 +66,8 @@ class EstudanteForm(forms.ModelForm):
         widgets = {
             'data_final': forms.DateInput(attrs={'type': 'date'})
         }
+
+class ContatoForm(forms.ModelForm):
+    class Meta:
+        model = Contato
+        fields = '__all__'

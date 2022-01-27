@@ -16,7 +16,9 @@ from .forms import *
 @login_required
 def index(request):
     imagens = listar_imagens(request)
-    return render(request, 'paginas/index.html', {'imagens': imagens})
+    categorias = listar_categoria_imagens(request)
+    context = {'imagens': imagens, 'categorias': categorias}
+    return render(request, 'paginas/index.html', context)
 
 
 @login_required
@@ -32,21 +34,40 @@ def listar_imagens_favoritas(request):
 
 
 @login_required
+def listar_categoria_imagens(request):
+    return Categoria_imagem.objects.all().order_by(
+        '-created_at')
+
+
+@login_required
 def home(request):
     imagens = listar_imagens(request)
-    return render(request, 'paginas/home.html', {'imagens': imagens})
+    categorias = listar_categoria_imagens(request)
+    context = {'imagens': imagens, 'categorias': categorias}
+    return render(request, 'paginas/home.html', context)
 
 
 @login_required
 def sobre(request):
     imagens = listar_imagens(request)
-    return render(request, 'paginas/sobre.html', {'imagens': imagens})
+    categorias = listar_categoria_imagens(request)
+    context = {'imagens': imagens, 'categorias': categorias}
+    return render(request, 'paginas/sobre.html', context)
 
 
 @login_required
 def contatos(request):
+    if request.method == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Contato salvo com sucesso.')
+            redirect('/home')
+    form = ContatoForm()
     imagens = listar_imagens(request)
-    return render(request, 'paginas/contatos.html', {'imagens': imagens})
+    categorias = listar_categoria_imagens(request)
+    context = {'imagens': imagens, 'categorias': categorias, 'form': form}
+    return render(request, 'paginas/contatos.html', context)
 
 
 @login_required
@@ -317,3 +338,27 @@ def estudante(request):
     else:
         form = EstudanteForm()
         return render(request, 'paginas/estudante/sou_estudante.html', {'form': form})
+
+
+@login_required
+def imagens_categorias(request):
+    imagens_favoritas = listar_imagens_favoritas(request)
+    return render(request, 'paginas/imagem/imagens_favoritas.html', {'imagens_favoritas': imagens_favoritas})
+
+
+@login_required
+def sucesso(request):
+    imagens = listar_imagens(request)
+    categorias = listar_categoria_imagens(request)
+    msg = 'jjj'
+    context = {'imagens': imagens, 'categorias': categorias, 'msg': msg}
+    return render(request, 'paginas/sucesso/sucesso.html', context)
+
+
+@login_required
+def erro(request):
+    imagens = listar_imagens(request)
+    categorias = listar_categoria_imagens(request)
+    msg = 'kkk'
+    context = {'imagens': imagens, 'categorias': categorias, 'msg': msg}
+    return render(request, 'paginas/erro/erro.html', context)
