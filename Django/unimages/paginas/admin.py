@@ -2,16 +2,7 @@ from django.contrib import admin
 
 # Importar e adicionar tabela.
 
-from .models import Plano
-from .models import Autor
-from .models import Imagem
-from .models import Cartao
-from .models import Assinante
-from .models import Imagem_favorita
-from .models import Categoria_imagem
-from .models import Formato_imagem
-from .models import Estudante
-from .models import Estabelecimento_de_ensino
+from .models import *
 
 admin.site.register(Plano)
 admin.site.register(Autor)
@@ -23,3 +14,4 @@ admin.site.register(Categoria_imagem)
 admin.site.register(Formato_imagem)
 admin.site.register(Estudante)
 admin.site.register(Estabelecimento_de_ensino)
+admin.site.register(Contato)

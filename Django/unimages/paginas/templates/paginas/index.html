@@ -1,29 +1,27 @@
 {% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
 
 {% block title %}Unimages{% endblock %}
 
 {% block content %}
-<div class="offset-1 col-10 list-div">
-    {% if user.is_authenticated %}
-    <h1>Bem-vindo ao Unimages</h1>
+
+<div class="container-text">
+  {% if user.is_authenticated %}
+  <h1 class="title">Bem-vindo a Unimages</h1>
+  {% else %}
+  <h1>O que é a Unimages?</h1>
+  <p>É uma aplicação Web.</p>
+  {% endif %}
+  <div class="text">
     <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur autem beatae saepe at nulla accusamus,
-        mollitia quibusdam laborum, voluptatem corporis molestiae ipsa, id quasi distinctio deserunt et. Ipsam, dolorem
-        quidem.Itaque, magnam explicabo! Corrupti eos optio repellat debitis omnis voluptates laudantium fuga dolore
-        incidunt autem. Veritatis harum sunt eveniet sequi, impedit quaerat modi assumenda recusandae molestias adipisci
-        laborum cumque ad.
+      Há 3 anos no mercado de imagem, a Unimages se consolidou como umas dos
+      maiores banco de imagens do país. Com uma plataforma de serviços de fácil
+      acesso e com um programa gratuito para alunos, oferecemos as mais
+      eficientes e inovadoras imagens, promovendo uma jornada de transformação e
+      com diferentes segmentos fotográficos. Juntos, somos mais de 300 mil
+      usuários no Brasil e no exterior, vem fazer parte desse time!
     </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid non porro temporibus, unde pariatur sit
-        doloremque molestiae fugit, nostrum, atque beatae praesentium vero deserunt aspernatur cumque culpa reiciendis
-        corrupti dolores!Illum ratione enim repellendus quas? Inventore at aut aliquid minus pariatur facilis id
-        adipisci consequuntur soluta doloremque. Sit quae quisquam quis molestiae similique esse natus atque saepe rem
-        placeat? Nostrum?
-    </p>
-    {% else %}
-    <h1>O que é o Unimages?</h1>
-    <p>É uma aplicação Web.</p>
-    {% endif %}
+  </div>
 </div>
 {% endblock %}

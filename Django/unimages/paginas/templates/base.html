@@ -34,12 +34,12 @@
     />
     <link
       rel="stylesheet"
-      href="{% static 'css/style_general.css' %}"
-      type="text/css"
+      href="{% static 'css/bootstrap/bootstrap.min.css' %}"
     />
     <link
       rel="stylesheet"
-      href="{% static 'css/bootstrap/bootstrap.min.css' %}"
+      href="{% static 'css/style_general.css' %}"
+      type="text/css"
     />
     <link
       rel="stylesheet"
@@ -52,7 +52,10 @@
   <body>
     <div class="container-fluid">
       <heade class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav
+          class="navbar navbar-expand-lg navbar-dark"
+          style="background-color: rgb(0, 9, 59)"
+        >
           <div class="container">
             <a class="navbar-brand h1 mb-0" href="{% url 'paginas:index'%}"
               >Unimages</a
@@ -85,13 +88,13 @@
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <i class="fa fa-images"></i>Imagens
+                    <i class="fa fa-images"></i>Categorias
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% for i in imagens %}
+                    {% for k in categorias %}
                     <li>
-                      <a class="nav-link" href="{% url 'paginas:home'%}"
-                        >{{i.titulo}}</a
+                      <a class="dropdown-item" href="{% url 'paginas:home'%}"
+                        >{{k.nome}}</a
                       >
                     </li>
                     {% endfor %}
@@ -191,28 +194,28 @@
           </div>
         </nav>
       </heade>
+      <main class="main">{% block content %} {% endblock %}</main>
+      <footer class="footer">
+        <ul class="social_list">
+          <li>
+            <a class="" href="https://facebook.com/"
+              ><i class="fab fa-facebook">Facebook</i></a
+            >
+          </li>
+          <li>
+            <a class="" href="https://instagram.com/"
+              ><i class="fab fa-instagram">Instagram</i></a
+            >
+          </li>
+          <li>
+            <a class="" href="https://twitter.com/"
+              ><i class="fab fa-twitter">Twitter</i></a
+            >
+          </li>
+        </ul>
+        <p class="copy_right"><span>Unimages</span>&copy;2021</p>
+      </footer>
     </div>
-    <main class="conteudo">{% block content %} {% endblock %}</main>
-    <footer class="footer navbar-fixed-bottom">
-      <ul class="social_list">
-        <li>
-          <a class="" href="https://facebook.com/"
-            ><i class="fab fa-facebook">Facebook</i></a
-          >
-        </li>
-        <li>
-          <a class="" href="https://instagram.com/"
-            ><i class="fab fa-instagram">Instagram</i></a
-          >
-        </li>
-        <li>
-          <a class="" href="https://twitter.com/"
-            ><i class="fab fa-twitter">Twitter</i></a
-          >
-        </li>
-      </ul>
-      <p class="copy_right"><span>Unimages</span>&copy;2021</p>
-    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
