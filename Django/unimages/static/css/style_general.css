@@ -131,6 +131,12 @@ a {
     transition: 0.25s;
 }
 
+.forms-p{
+    margin-top: 20px;
+    text-align: center;
+    color: #f5f5f5;
+}
+
 /* Login*/
 
 .main-login {
@@ -240,7 +246,7 @@ a {
     transition: 0.15s linear;
 }
 
-.form-p-login, .form-p-cadastro {
+.form-p-login, .form-p-cadastro{
     margin-top: 20px;
     text-align: center;
     color: #f5f5f5;
