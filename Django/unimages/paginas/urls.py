@@ -46,4 +46,6 @@ urlpatterns = [
          views.imagens_favoritas, name='imagens_favoritas'),
     path('estudante/',
          views.estudante, name='estudante'),
+    path('imagens_categorias/<int:id>/',
+         views.imagens_categorias, name='imagens_categorias'),
 ]
