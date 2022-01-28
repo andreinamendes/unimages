@@ -341,9 +341,12 @@ def estudante(request):
 
 
 @login_required
-def imagens_categorias(request):
-    imagens_favoritas = listar_imagens_favoritas(request)
-    return render(request, 'paginas/imagem/imagens_favoritas.html', {'imagens_favoritas': imagens_favoritas})
+def imagens_categorias(request, id):
+    categoria = get_object_or_404(Categoria_imagem, pk=id)
+    imagens = Imagem.objects.all().filter(categoria=categoria).order_by(
+        '-created_at')
+    context = {'imagens': imagens, 'categoria': categoria}
+    return render(request, 'paginas/categoria/imagens_categoria.html', context)
 
 
 @login_required
