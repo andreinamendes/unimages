@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from datetime import date, timedelta
 from .models import *
 from .forms import *
+from random import shuffle
 
 # Primeira tela.
 
@@ -23,14 +24,16 @@ def index(request):
 
 @login_required
 def listar_imagens(request):
-    return Imagem.objects.all().order_by(
-        '-created_at')
+    imagens = list(Imagem.objects.all())
+    shuffle(imagens)
+    return imagens
 
 
 @login_required
 def listar_imagens_favoritas(request):
-    return Imagem_favorita.objects.all().order_by(
-        '-created_at')
+    imagens = list(Imagem_favorita.objects.all())
+    shuffle(imagens)
+    return imagens
 
 
 @login_required
@@ -207,21 +210,25 @@ def listar_imagem(request, id):
 
 @login_required
 def cadastrar_imagem(request):
-    autor = get_object_or_404(Autor, usuario=request.user)
-    if request.method == 'POST':
-        form = ImagemForm(request.POST, request.FILES)
-        if form.is_valid():
-            imagem = form.save(commit=False)
-            imagem.autor = autor
-            imagem.save()
-            messages.info(request, 'Imagem salva com sucesso.')
-            return redirect('/home')
+    try:
+        autor = get_object_or_404(Autor, usuario=request.user)
+        
+        if request.method == 'POST':
+            form = ImagemForm(request.POST, request.FILES)
+            if form.is_valid():
+                imagem = form.save(commit=False)
+                imagem.autor = autor
+                imagem.save()
+                messages.info(request, 'Imagem salva com sucesso.')
+                return redirect('/home')
+            else:
+                return render(request, 'paginas/imagem/cad_imagem.html', {'form': form})
         else:
+            form = ImagemForm()
             return render(request, 'paginas/imagem/cad_imagem.html', {'form': form})
-    else:
-        form = ImagemForm()
-        return render(request, 'paginas/imagem/cad_imagem.html', {'form': form})
-
+    except:
+        messages.warning(request, 'Você precisa se cadastrar como um autor para cadastrar uma imagem.')
+        return redirect('/home')
 
 @login_required
 def editar_imagem(request, id_plano):
@@ -294,13 +301,6 @@ def imagens_favoritas(request):
     imagens_favoritas = listar_imagens_favoritas(request)
     return render(request, 'paginas/imagem/imagens_favoritas.html', {'imagens_favoritas': imagens_favoritas})
 
-
-@login_required
-def download_imagem(request, id):
-    img = get_object_or_404(Imagem, id=id)
-    return redirect('/home')
-
-
 @login_required
 def cadastrar_assinante(request):
     if request.method == 'POST':
@@ -343,11 +343,11 @@ def estudante(request):
 @login_required
 def imagens_categorias(request, id):
     categoria = get_object_or_404(Categoria_imagem, pk=id)
-    imagens = Imagem.objects.all().filter(categoria=categoria).order_by(
-        '-created_at')
-    context = {'imagens': imagens, 'categoria': categoria}
+    imagens = list(Imagem.objects.all().filter(categoria=categoria))
+    shuffle(imagens)
+    categorias = listar_categoria_imagens(request)
+    context = {'imagens': imagens, 'categoria': categoria, 'categorias': categorias}
     return render(request, 'paginas/categoria/imagens_categoria.html', context)
-
 
 @login_required
 def sucesso(request):
@@ -357,6 +357,9 @@ def sucesso(request):
     context = {'imagens': imagens, 'categorias': categorias, 'msg': msg}
     return render(request, 'paginas/sucesso/sucesso.html', context)
 
+@login_required
+def download_imagem(request, id):
+    pass
 
 @login_required
 def erro(request):
