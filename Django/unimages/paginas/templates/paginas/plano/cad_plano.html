@@ -17,6 +17,7 @@
 
 <main class="main-forms">
     <div class="container-forms">
+<<<<<<< HEAD
       <form method="post" class="forms">
          <h4>Cadastrar plano</h4>
          <input type="hidden" name="csrfmiddlewaretoken" value="gTovCAnQHqwTLFeMswIQENubVSsP5OWBJP2OV0URTsPlrMCwI9RLMkb0xT5sXBVa">
@@ -51,6 +52,17 @@
          <p class="form-p">Deseja voltar a home? <a href="/home">Clique aqui!</a>
          </p>
      </form>
+=======
+        <form method="post" class="forms">
+            <h4>Cadastrar plano</h4>
+            {% csrf_token %}
+
+            {{ form | crispy }}
+            <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+            <p class="forms-p">Deseja voltar a home? <a href="{% url 'paginas:home' %}">Clique aqui!</a>
+            </p>
+        </form>
+>>>>>>> a358fd4e26133c739a425ac8e58b1c95d8342776
     </div>
 </main>
 
