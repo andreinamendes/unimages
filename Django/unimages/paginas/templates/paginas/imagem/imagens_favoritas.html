@@ -29,8 +29,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a type="submit" class="btn btn-sm btn-outline-secondary" href="{% url 'paginas:desfavoritar_imagem' i.id %}">Desfavoritar <i class="fa fa-heart-broken"></i></a>
-                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{i.imagem.arquivo.url}}" download=""{{i.imagem.titulo}}"">Download <i class="fa fa-download"></i></a>
-                </div>
+                  </div>
                 <small class="text-muted">{{i.imagem.formato.nome}}</small>
               </div>
             </div>
