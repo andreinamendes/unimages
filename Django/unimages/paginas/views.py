@@ -206,8 +206,11 @@ def cadastrar_autor(request):
             if form.is_valid():
                 autor = form.save(commit=False)
                 autor.usuario = request.user
-                autor.save()
-                messages.info(request, 'Autor salvo com sucesso.')
+                try:
+                    autor.save()
+                    messages.info(request, 'Autor salvo com sucesso.')
+                except:
+                    messages.warning(request, 'Você já é autor.')
                 return redirect('/home')
             else:
                 return render(request, 'paginas/autor/ser_autor.html', {'form': form})
@@ -408,9 +411,12 @@ def cadastrar_assinante(request):
                 assinante.usuario = request.user
                 assinante.data_de_inicio = date.today()
                 assinante.data_final = date.today() + timedelta(days=364)
-                assinante.save()
-                messages.info(
+                try:
+                    assinante.save()
+                    messages.info(
                     request, 'Parabens! Assinatura feita com sucesso!')
+                except:
+                    messages.warning(request, 'Você já é assinante.')
                 return redirect('/home')
             else:
                 return render(request, 'paginas/assinante/ser_assinante.html', {'form': form})
@@ -430,8 +436,11 @@ def estudante(request):
             if form.is_valid():
                 estudante = form.save(commit=False)
                 estudante.usuario = request.user
-                estudante = estudante.save()
-                messages.info(request, 'Estudante salvo com sucesso.')
+                try:
+                    estudante = estudante.save()
+                    messages.info(request, 'Estudante salvo com sucesso.')
+                except:
+                    messages.warning(request, 'Você já é estudante.')
                 return redirect('/home')
             else:
                 return render(request, 'paginas/estudante/sou_estudante.html', {'form': form})
