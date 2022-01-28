@@ -93,7 +93,7 @@
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for k in categorias %}
                     <li>
-                      <a class="dropdown-item" href="{% url 'paginas:home'%}"
+                      <a class="dropdown-item" href="{% url 'paginas:imagens_categorias' k.id %}"
                         >{{k.nome}}</a
                       >
                     </li>
@@ -156,6 +156,13 @@
                         class="dropdown-item"
                         href="{% url 'paginas:estudante' %}"
                         ><i class="fa fa-user-graduate"></i>Sou estudante</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="{% url 'paginas:imagens_favoritas' %}"
+                        ><i class="fa fa-heart"></i>Minhas imagens favoritas</a
                       >
                     </li>
                     <li>

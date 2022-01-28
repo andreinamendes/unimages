@@ -10,7 +10,7 @@
     <div class="container-forms">
         <form method="post" class="forms" action="{% url 'account_logout' %}">
             <h4>Sair do Jecode</h4>
-            <p>Você tem certeza que deseja sair?</p>
+            <p style="color:#ffff">Você tem certeza que deseja sair?</p>
             {% csrf_token %}
             {{ form | crispy }}
             <button type="submit" class="botao">Sair</button>

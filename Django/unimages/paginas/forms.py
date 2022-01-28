@@ -19,8 +19,8 @@ class PlanoForm(forms.ModelForm):
         fields = ['nome', 'descricao', 'valor', 'duracao', 'pix']
         nome = forms.CharField()
         descricao = forms.CharField()
-        valor = forms.FloatField()
-        duracao = forms.CharField()
+        valor = forms.FloatField(min_value=0)
+        duracao = forms.IntegerField(min_value=0)
         pix = forms.CharField()
 
 

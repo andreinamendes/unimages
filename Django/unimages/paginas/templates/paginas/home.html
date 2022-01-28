@@ -53,9 +53,13 @@
         {% for i in imagens %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
+            <a href="{% url 'paginas:imagem' i.id %}">
             <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block; object-fit: contain;" src="{{i.arquivo.url}}" data-holder-rendered="true">
+            </a>
             <div class="card-body">
-              <p class="card-text">{{i.titulo}}</p>
+              <a href="{% url 'paginas:imagem' i.id %}">
+                <p class="card-text" style="color: rgb(0, 9, 59)">{{i.titulo}}</p>
+               </a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <form method="post" action="{% url 'paginas:favoritar_imagem' i.id %}">
@@ -66,7 +70,7 @@
                   <form method="post" action="{% url 'paginas:favoritar_imagem' i.id %}">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Download <i class="fa fa-download"></i></button>
+                    <a type="button" class="btn btn-sm btn-outline-secondary" href="{{i.imagem.arquivo.url}}" download=""{{i.imagem.titulo}}"">Download <i class="fa fa-download"></i></a>
                   </form>
                 </div>
                 <small class="text-muted">{{i.formato.nome}}</small>

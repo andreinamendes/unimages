@@ -17,15 +17,52 @@
 
 <main class="main-forms">
     <div class="container-forms">
+<<<<<<< HEAD
+      <form method="post" class="forms">
+         <h4>Cadastrar plano</h4>
+         <input type="hidden" name="csrfmiddlewaretoken" value="gTovCAnQHqwTLFeMswIQENubVSsP5OWBJP2OV0URTsPlrMCwI9RLMkb0xT5sXBVa">
+         <div id="div_id_nome" class="form-group">
+            <label for="id_nome" class=" requiredField">
+            Nome</label> 
+            <div class=""> <input type="text" name="nome" maxlength="128" class="textinput textInput form-control" required="" id="id_nome"> </div>
+         </div>
+         <div id="div_id_descricao" class="form-group">
+            <label for="id_descricao" class="">
+            Descricao
+            </label> 
+            <div class=""> <textarea name="descricao" cols="40" rows="10" maxlength="258" class="textarea form-control" id="id_descricao" style="height: 139px;"></textarea> </div>
+         </div>
+         <div id="div_id_valor" class="form-group">
+            <label for="id_valor" class=" requiredField">
+            Valor</label> 
+            <div class=""> <input type="number" name="valor" step="any" class="numberinput form-control" required="" id="id_valor" min="0"> </div>
+         </div>
+         <div id="div_id_duracao" class="form-group">
+            <label for="id_duracao" class=" requiredField">
+            Duracao</label> 
+            <div class=""> <input type="number" name="duracao" class="numberinput form-control" required="" id="id_duracao" min="0"> </div>
+         </div>
+         <div id="div_id_pix" class="form-group">
+            <label for="id_pix" class="">
+            Pix
+            </label> 
+            <div class=""> <textarea name="pix" cols="40" rows="10" class="textarea form-control" id="id_pix"></textarea> </div>
+         </div>
+         <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+         <p class="form-p">Deseja voltar a home? <a href="/home">Clique aqui!</a>
+         </p>
+     </form>
+=======
         <form method="post" class="forms">
             <h4>Cadastrar plano</h4>
             {% csrf_token %}
 
             {{ form | crispy }}
             <button type="submit" class="btn btn-primary btn-block">Salvar</button>
-            <p class="form-p">Deseja voltar a home? <a href="{% url 'paginas:home' %}">Clique aqui!</a>
+            <p class="forms-p">Deseja voltar a home? <a href="{% url 'paginas:home' %}">Clique aqui!</a>
             </p>
         </form>
+>>>>>>> a358fd4e26133c739a425ac8e58b1c95d8342776
     </div>
 </main>
 

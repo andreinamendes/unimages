@@ -1,4 +1,5 @@
 from django.db import models
+
 #from django.contrib.auth.models import CustomUser
 
 # Quadro: contém o quadro.
@@ -14,14 +15,14 @@ class Plano(models.Model):
         max_length=128,
         null=False,
         blank=False,
-        unique=True
+        unique=True,
     )
 
     # Descricao: Descrição do plano.
     descricao = models.TextField(
         max_length=258,
         null=False,
-        blank=True
+        blank=False,
     )
 
     # Valor: valor do plano.
@@ -37,9 +38,10 @@ class Plano(models.Model):
     )
 
     # Pix: pix do plano.
-    pix = models.TextField(
+    pix = models.CharField(
         blank=True,
-        unique=True
+        unique=True,
+        max_length=32,
     )
 
     created_at = models.DateTimeField(
@@ -82,11 +84,11 @@ class Autor(models.Model):
         max_length=10,
         null=False,
         blank=False,
-        unique=True
+        unique=True,
     )
 
     pix = models.CharField(
-        max_length=128,
+        max_length=32,
         unique=True,
         blank=True,
     )
@@ -204,7 +206,7 @@ class Imagem(models.Model):
     # Valor: valor do quadro.
     valor = models.FloatField(
         null=False,
-        blank=False
+        blank=False,
     )
 
     # Titulo: titulo da imagem.
@@ -246,9 +248,10 @@ class Imagem(models.Model):
 class Imagem_favorita(models.Model):
 
   # Usuario: criador do Quadro (chave estrangeira).
-    usuario = models.ForeignKey(
-        'usuarios.CustomUser', null=False, on_delete=models.CASCADE)
-    imagem = models.ForeignKey(Imagem, null=False, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(
+        'usuarios.CustomUser', null=False, unique=True, on_delete=models.CASCADE)
+    imagem = models.OneToOneField(
+        Imagem, unique=True, null=False, on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -280,7 +283,7 @@ class Cartao(models.Model):
     numero = models.IntegerField(
         null=False,
         blank=False,
-        unique=True
+        unique=True,
     )
 
     validade = models.DateField(
@@ -366,6 +369,7 @@ class Estudante(models.Model):
 
     def __str__(self):
         return self.usuario.username
+
 
 class Contato(models.Model):
     email = models.EmailField()
