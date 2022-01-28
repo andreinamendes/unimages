@@ -15,22 +15,40 @@
 </ul>
 {% endif %}
 
-
-<h1>Imagens</h1>
-<section class="flex">
-    {% for i in imagens_favoritas %}
-        <div class="img">
-            <a href="{% url 'paginas:imagem' i.imagem.id %}">
-                <img src="{{i.imagem.arquivo.url}}" alt="Forest" width="300" height="200">
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for i in imagens %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <a href="{% url 'paginas:imagem' i.id %}">
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block; object-fit: contain;" src="{{i.arquivo.url}}" data-holder-rendered="true">
             </a>
-            <form method="post" action="{% url 'paginas:favoritar_imagem' i.imagem.id %}">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <button type="submit"><i class="fa fa-heart"></i>
-                    Favoritar</button>
-            </form>
-            <div class="desc">{{i.imagem.descricao}}</div>
+            <div class="card-body">
+              <a href="{% url 'paginas:imagem' i.id %}">
+                <p class="card-text" style="color: rgb(0, 9, 59)">{{i.titulo}}</p>
+               </a>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <form method="post" action="{% url 'paginas:favoritar_imagem' i.id %}">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">Favoritar <i class="fa fa-heart"></i></button>
+                  </form>
+                  <form method="post" action="{% url 'paginas:favoritar_imagem' i.id %}">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <a type="button" class="btn btn-sm btn-outline-secondary" href="{{i.imagem.arquivo.url}}" download=""{{i.imagem.titulo}}"">Download <i class="fa fa-download"></i></a>
+                  </form>
+                </div>
+                <small class="text-muted">{{i.formato.nome}}</small>
+              </div>
+            </div>
+          </div>
         </div>
-    {% endfor %}
-</section>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
 {% endblock %}
