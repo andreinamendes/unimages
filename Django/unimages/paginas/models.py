@@ -248,10 +248,10 @@ class Imagem(models.Model):
 class Imagem_favorita(models.Model):
 
   # Usuario: criador do Quadro (chave estrangeira).
-    usuario = models.OneToOneField(
-        'usuarios.CustomUser', null=False, unique=True, on_delete=models.CASCADE)
-    imagem = models.OneToOneField(
-        Imagem, unique=True, null=False, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(
+        'usuarios.CustomUser', null=False, on_delete=models.CASCADE)
+    imagem = models.ForeignKey(
+        Imagem, null=False, on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -265,6 +265,13 @@ class Imagem_favorita(models.Model):
 
         verbose_name_plural = 'Imagens_favoritas'
         ordering = ('created_at',)
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=['usuario', 'imagem'],
+                name='unica_img'
+            )
+        ]
 
 
 class Cartao(models.Model):

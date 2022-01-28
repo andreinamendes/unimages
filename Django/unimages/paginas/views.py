@@ -84,6 +84,7 @@ def contatos(request):
     context = {'imagens': imagens, 'categorias': categorias, 'form': form}
     return render(request, 'paginas/contatos.html', context)
 
+
 @login_required
 def planos(request):
     planos = listar_planos(request)
@@ -106,7 +107,11 @@ def listar_planos(request):
 def plano(request, id):
     try:
         plano = get_object_or_404(Plano, pk=id)
-        return render(request, 'paginas/plano/plano.html', {'plano': plano})
+        imagens = listar_imagens(request)
+        categorias = listar_categoria_imagens(request)
+        context = {'imagens': imagens,
+                   'categorias': categorias, 'plano': plano}
+        return render(request, 'paginas/plano/plano.html', context)
     except:
         redirect('/home')
         messages.warning(request, 'Plano não encontado.')
@@ -138,11 +143,11 @@ def cadastrar_plano(request):
 @login_required
 def editar_plano(request, id):
     try:
-        plano = get_object_or_404(Plano, id=id)
+        plano = get_object_or_404(Plano, pk=id)
     except:
         redirect('/home')
         messages.warning(request, 'Plano não encontado.')
-        
+
     try:
         if request.method == 'POST':
             form = PlanoForm(request.POST, instance=plano)
@@ -160,12 +165,12 @@ def editar_plano(request, id):
     except:
         redirect('/home')
         messages.warning(request, 'Plano não editado.')
-    
+
 
 @login_required
 def deletar_plano(request, id):
     try:
-        plano = get_object_or_404(Plano, id=id)
+        plano = get_object_or_404(Plano, pk=id)
     except:
         redirect('/home')
         messages.warning(request, 'Plano não encontado.')
@@ -274,7 +279,7 @@ def listar_imagem(request, id):
 def cadastrar_imagem(request):
     try:
         autor = get_object_or_404(Autor, usuario=request.user)
-        
+
         if request.method == 'POST':
             form = ImagemForm(request.POST, request.FILES)
             if form.is_valid():
@@ -289,8 +294,10 @@ def cadastrar_imagem(request):
             form = ImagemForm()
             return render(request, 'paginas/imagem/cad_imagem.html', {'form': form})
     except:
-        messages.warning(request, 'Você precisa se cadastrar como um autor para cadastrar uma imagem.')
+        messages.warning(
+            request, 'Você precisa se cadastrar como um autor para cadastrar uma imagem.')
         return redirect('/home')
+
 
 @login_required
 def editar_imagem(request, id_plano):
@@ -352,10 +359,10 @@ def cadastrar_formato_imagem(request):
 @login_required
 def favoritar_imagem(request, id):
     try:
-        imagem = get_object_or_404(Imagem, id=id)
+        imagem = get_object_or_404(Imagem, pk=id)
     except:
-        redirect('/home')
         messages.warning(request, 'Imagem não encontada.')
+        return redirect('/home')
     try:
         if request.method == 'POST':
             form = ImagemFavoritaForm(request.POST)
@@ -370,14 +377,26 @@ def favoritar_imagem(request, id):
                 messages.info(request, 'Já foi salva.')
                 return redirect('/home')
     except:
-        redirect('/home')
-        messages.warning(request, 'Imagem não favoritada.')
+        messages.warning(request, 'Imagem já está favoritada.')
+        return redirect('/home')
+
+
+@login_required
+def desfavoritar_imagem(request, id):
+    try:
+        imagem = get_object_or_404(Imagem_favorita, pk=id)
+        imagem.delete()  # Deletando o quadro
+        messages.info(request, 'Já foi salvo.')
+    except:
+        messages.warning(request, 'Imagem não encontada.')
+    return redirect('/imagens_favoritas')
 
 
 @login_required
 def imagens_favoritas(request):
     imagens_favoritas = listar_imagens_favoritas(request)
     return render(request, 'paginas/imagem/imagens_favoritas.html', {'imagens_favoritas': imagens_favoritas})
+
 
 @login_required
 def cadastrar_assinante(request):
@@ -390,7 +409,8 @@ def cadastrar_assinante(request):
                 assinante.data_de_inicio = date.today()
                 assinante.data_final = date.today() + timedelta(days=364)
                 assinante.save()
-                messages.info(request, 'Parabens! Assinatura feita com sucesso!')
+                messages.info(
+                    request, 'Parabens! Assinatura feita com sucesso!')
                 return redirect('/home')
             else:
                 return render(request, 'paginas/assinante/ser_assinante.html', {'form': form})
@@ -420,7 +440,8 @@ def estudante(request):
             return render(request, 'paginas/estudante/sou_estudante.html', {'form': form})
     except:
         redirect('/home')
-        messages.warning(request, 'O plano de estudante não pôde ser contratado.')
+        messages.warning(
+            request, 'O plano de estudante não pôde ser contratado.')
 
 
 @login_required
@@ -433,8 +454,10 @@ def imagens_categorias(request, id):
     imagens = list(Imagem.objects.all().filter(categoria=categoria))
     shuffle(imagens)
     categorias = listar_categoria_imagens(request)
-    context = {'imagens': imagens, 'categoria': categoria, 'categorias': categorias}
+    context = {'imagens': imagens,
+               'categoria': categoria, 'categorias': categorias}
     return render(request, 'paginas/categoria/imagens_categoria.html', context)
+
 
 @login_required
 def sucesso(request):
@@ -444,9 +467,11 @@ def sucesso(request):
     context = {'imagens': imagens, 'categorias': categorias, 'msg': msg}
     return render(request, 'paginas/sucesso/sucesso.html', context)
 
+
 @login_required
 def download_imagem(request, id):
     pass
+
 
 @login_required
 def erro(request):

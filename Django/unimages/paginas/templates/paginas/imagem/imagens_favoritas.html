@@ -28,11 +28,8 @@
               <p class="card-text">{{i.imagem.titulo}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <form method="post" action="{% url 'paginas:favoritar_imagem' i.imagem.id %}">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <a type="button" class="btn btn-sm btn-outline-secondary" href="{{i.imagem.arquivo.url}}" download=""{{i.imagem.titulo}}"">Download <i class="fa fa-download"></i></a>
-                  </form>
+                  <a type="submit" class="btn btn-sm btn-outline-secondary" href="{% url 'paginas:desfavoritar_imagem' i.id %}">Desfavoritar <i class="fa fa-heart-broken"></i></a>
+                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{i.imagem.arquivo.url}}" download=""{{i.imagem.titulo}}"">Download <i class="fa fa-download"></i></a>
                 </div>
                 <small class="text-muted">{{i.imagem.formato.nome}}</small>
               </div>

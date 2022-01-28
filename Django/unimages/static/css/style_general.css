@@ -21,7 +21,6 @@ a {
     list-style: none;
     text-decoration: none;
     pointer-events: auto;
-    
 }
 
 .link-plano {
@@ -29,6 +28,14 @@ a {
     text-decoration: none;
     pointer-events: auto;
     color: black;
+}
+
+.link-plano:hover, .link-plano:focus{
+    list-style: none;
+    text-decoration: none;
+    pointer-events: auto;
+    color: rgb(0, 9, 59);
+    text-decoration: none;
 }
 
 .container-fluid {
@@ -82,18 +89,13 @@ a {
     background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
-    /*
-    display: grid;
-    place-items: center;
-     background: linear-gradient(45deg, #8e2de2, #4a00e0);
-    */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .container-forms {
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .forms {
@@ -138,7 +140,7 @@ a {
     transition: 0.25s;
 }
 
-.forms-p{
+.forms-p {
     margin-top: 20px;
     text-align: center;
     color: #f5f5f5;
@@ -253,7 +255,7 @@ a {
     transition: 0.15s linear;
 }
 
-.form-p-login, .form-p-cadastro{
+.form-p-login, .form-p-cadastro {
     margin-top: 20px;
     text-align: center;
     color: #f5f5f5;
@@ -351,6 +353,11 @@ ul li {
     font-weight: bold;
 }
 
+.social_list a:active, .social_list a:hover, .copy_right:active, .copy_right:hover{
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgba(82, 82, 85, 0.952);
+}
+
 /* CSS FLEXBOX 1 */
 
 .flex {
@@ -365,14 +372,14 @@ ul li {
     margin: 10px;
 }
 
-.pic{
+.pic {
     height: 225px;
     width: 100%;
     display: block;
     object-fit: contain;
 }
 
-.view-image{
+.view-image {
     height: 400px;
     width: 100%;
     display: block;

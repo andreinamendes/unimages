@@ -38,6 +38,8 @@ urlpatterns = [
          views.cadastrar_assinante, name='cadastrar_assinante'),
     path('favoritar_imagem/<int:id>/',
          views.favoritar_imagem, name='favoritar_imagem'),
+    path('desfavoritar_imagem/<int:id>/',
+         views.desfavoritar_imagem, name='desfavoritar_imagem'),
     path('download_imagem/<int:id>/',
          views.download_imagem, name='download_imagem'),
     path('imagem/<int:id>/',
