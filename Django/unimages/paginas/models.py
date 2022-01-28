@@ -155,7 +155,7 @@ class Formato_imagem(models.Model):
 
     class Meta:
 
-        verbose_name_plural = 'Categorias'
+        verbose_name_plural = 'Formato_imagens'
         ordering = ('created_at',)
 
     def __str__(self):
