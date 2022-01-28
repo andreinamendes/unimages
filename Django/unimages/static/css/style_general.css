@@ -361,3 +361,17 @@ ul li {
     flex: 1 1 200px;
     margin: 10px;
 }
+
+.pic{
+    height: 225px;
+    width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.view-image{
+    height: 400px;
+    width: 100%;
+    display: block;
+    object-fit: contain;
+}

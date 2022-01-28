@@ -7,6 +7,24 @@
 {% block content %}
 
 <!-- Adicione uma forma de pagamento -->
-<img src="{{imagem.arquivo.url}}" alt="Forest" width="300" height="200">
+<div class="card" style="text-align: center; width: 70%; margin-left: 15%">
+    </br>
+    <div class="card-head">
+        <img class="view-image card-img-top" src="{{imagem.arquivo.url}}" alt="{{imagem.titulo}}">
+        </br>
+        <h5 class="card-title">{{imagem.titulo}}</h5>
+    </div>
+    <div class="card-body" style="text-align: left; width: 20%; margin-left: 40%">
+        <p><strong>Formato: </strong>{{imagem.formato.nome}}</p>
+        <p><strong>Descrição: </strong>{{imagem.descricao}}</p>
+        <p><strong>Valor: </strong>{{imagem.valor}}</p>
+        <p><strong>Autor: </strong>{{imagem.autor}}</p>
+        <p><strong>Categoria: </strong>{{imagem.categoria}}</p>
+        <p><strong>Resolução: </strong>{{imagem.resolucao}}</p>
+    </div>
+    <div class="card-foot">
+        <a class="btn btn-sm btn-outline-secondary" href="{{imagem.arquivo.url}}" download="{{imagem.titulo}}">Download </a>
+    </div>
+</div>
 
 {% endblock %}
