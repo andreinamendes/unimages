@@ -76,7 +76,10 @@ def contatos(request):
 @login_required
 def planos(request):
     planos = listar_planos(request)
-    return render(request, 'paginas/plano/planos.html', {'planos': planos})
+    imagens = listar_imagens(request)
+    categorias = listar_categoria_imagens(request)
+    context = {'imagens': imagens, 'categorias': categorias, 'planos': planos}
+    return render(request, 'paginas/plano/planos.html', context)
 
 
 @login_required

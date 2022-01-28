@@ -5,11 +5,17 @@
 {% block title %} Planos | Unimages{% endblock %}
 
 {% block content %}
-
-    {% for p in planos %}
-        <a href="../plano/{{p.id}}">{{p.nome}}</a>
-        <a href="../editar_plano/{{p.id}}"><span><i class="fas fa-edit"></i></span></a>
-        <a href="../deletar_plano/{{p.id}}"><span><i class="fas fa-trash"></i></span></a>
-    {% endfor %}
+<div class="container-text">
+    <div class="text">
+        {% for p in planos %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><a class="link-plano" href="../plano/{{p.id}}">{{p.nome}}</a></h5>
+              <p class="card-text">{{p.descricao}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
