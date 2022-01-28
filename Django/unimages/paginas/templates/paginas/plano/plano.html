@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% load crispy_forms_tags %} ## Carregando a biblioteca
 
@@ -6,7 +6,6 @@
 
 {% block content %}
 
-    <h1>{{plano.nome}}</h1>
     
 {% if messages %}
 
@@ -17,18 +16,17 @@
 </ul>
 {% endif %}
 
-<main class="main-forms">
-    <div class="container-forms">
-        <form method="post" class="forms">
-            <h4>Plano</h4>
-            {% csrf_token %}
-
-            {{ form | crispy }}
-            <button type="submit" class="btn btn-primary btn-block">Salvar</button>
-            <p class="form-p">Deseja voltar a home? <a href="{% url 'paginas:home' %}">Clique aqui!</a>
-            </p>
-        </form>
+<div class="container-text">
+    <div class="text">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{plano.nome}}</h5>
+              <p class="card-text">Descrição: {{plano.descricao}}</p>
+              <p class="card-text">Valor: R$ {{plano.valor}}</p>
+              <p class="card-text">Duração: {{plano.valor}}</p>
+              <p class="card-text">Pix: {{plano.pix}}</p>
+            </div>
+        </div>
     </div>
-</main>
-
+</div>
 {% endblock %}
