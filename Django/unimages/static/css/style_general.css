@@ -319,6 +319,10 @@ ul li {
     margin-bottom: 0px;
 }
 
+.footer:hover {
+    display: none;
+}
+
 .social_list {
     display: flex;
     justify-content: center;
@@ -341,8 +345,6 @@ ul li {
     color: #f5f5f5;
     text-decoration: none;
 }
-
-
 
 .copy_right span {
     font-weight: bold;
