@@ -1,6 +1,6 @@
 # Repositório Unimages
 
-Repositório voltado a todas as informações do projeto da disciplina de Engenharia de Software ministrada pelo professor Camilo Almendra.
+Repositório voltado a todas as informações do projeto da disciplina de Engenharia de Software ministrada pelo professor [Camilo Almendra](https://github.com/ccalmendra).
 
 Equipe:  
 [Andreina Mendes](https://github.com/andreinamendes)  
